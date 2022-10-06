@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repositories.Mappings;
+using WebApi.SocialNetWorkAdministration.Infrastructure;
 using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
 using WebApi.SocialNetWorkAdministration.Infrastructure.Extensions;
 
@@ -80,9 +81,9 @@ namespace WebApi.SocialNetWorkAdministration
             });
 
             app.UseCors();
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            SeedData.Seed(app);
             
         }
     }

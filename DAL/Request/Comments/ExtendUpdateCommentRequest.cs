@@ -3,10 +3,15 @@
 namespace DAL.Request.Comments
 {
     /// <summary>
-    /// Request new comment model.
+    /// Update request for Comment.
     /// </summary>
-    public class NewCommentRequest
+    public class ExtendUpdateCommentRequest
     {
+        /// <summary>
+        /// Id.
+        /// </summary>
+        [Required]
+        public int Id { get; set; }
         /// <summary>
         /// Text.
         /// </summary>
@@ -22,5 +27,9 @@ namespace DAL.Request.Comments
         /// </summary>
         [Required]
         public int NewsId { get; set; }
+        /// <summary>
+        /// LinkedCommentId.
+        /// </summary>
+        public int? LinkedCommentId { get; set; }
     }
 }

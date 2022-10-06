@@ -112,6 +112,14 @@ namespace Repositories
             return _mapper.Map<TDto>(newEntity);
         }
 
+        public virtual async Task UpdateRangeAsync(IEnumerable<TDto> dtoes)
+        {
+            var entites = _mapper.Map<IEnumerable<TModel>>(dtoes);
+            DbSet.UpdateRange(entites);
+            SaveChanges();
+        }
+
+
         public virtual  void SaveChanges()
         {
             _context.SaveChanges();

@@ -16,7 +16,7 @@ namespace DAL.Dto
         /// <summary>
         /// UserId.
         /// </summary>
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         /// <summary>
         /// News header. 
         /// </summary>
@@ -25,6 +25,10 @@ namespace DAL.Dto
         /// News body.
         /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// Date of news update
+        /// </summary>
+        public DateTime UpdatedTime { get; set; }
         /// <summary>
         /// News comments.
         /// </summary>

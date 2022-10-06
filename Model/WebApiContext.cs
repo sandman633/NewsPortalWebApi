@@ -7,6 +7,7 @@ namespace Model
     public class WebApiContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+
         public DbSet<News> News { get; set; }
 
         public DbSet<UserPolicy> UsersPolicies { get; set; }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace Repositories.Interfaces.CRUD
 {
@@ -12,6 +11,7 @@ namespace Repositories.Interfaces.CRUD
         ICreatable<TDto>,
         IDeletable,
         IUpdatable<TDto>,
+        IUpdatableRange<TDto>,
         IGettable<TDto, TModel>,
         IGettableById<TDto>
     {

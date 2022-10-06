@@ -9,6 +9,9 @@ namespace BL.Services.Interfaces
 {
     public interface ICommentsService : ICrudService<CommentsDto>
     {
-        Task<CommentsDto> LeaveComment(CommentsDto comment);
+        Task<CommentsDto> ReplyComment(CommentsDto comment);
+        Task HideComments(params int[] ids);
+        Task<IEnumerable<CommentsDto>> GetCommentsFromNews(int newsId);
+        Task<IEnumerable<CommentsDto>> GetCommentsFromUser(int userId);
     }
 }
