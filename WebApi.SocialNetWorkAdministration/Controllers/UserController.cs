@@ -8,13 +8,11 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using WebApi.SocialNetWorkAdministration.Swagger;
 
 namespace WebApi.SocialNetWorkAdministration.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = SwagDocParts.User)]
+    [Route("api/[controller]s")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -70,7 +68,7 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         {
             _logger.LogInformation("Users/Create was requested.");
             var userDto = _mapper.Map<UserDto>(user);
-            var response = await _userService.CreateAsync (userDto);
+            var response = await _userService.CreateAsync(userDto);
             return Ok(_mapper.Map<UserResponse>(response));
         }
     }

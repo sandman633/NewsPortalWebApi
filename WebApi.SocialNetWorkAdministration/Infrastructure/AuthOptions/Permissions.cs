@@ -18,5 +18,4 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
         Update = 4,
         Delete = 8,
     }
-
 }

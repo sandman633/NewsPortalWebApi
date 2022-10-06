@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace DAL.Dto
 {
     /// <summary>
@@ -42,5 +39,9 @@ namespace DAL.Dto
         /// LinkedCommentId.
         /// </summary>
         public int? LinkedCommentId { get; set; }
+        /// <summary>
+        /// Comment State - DELETED - 1 , NOTDELETED - 0
+        /// </summary>
+        public short CommentState { get; set; }
     }
 }

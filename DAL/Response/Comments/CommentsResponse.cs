@@ -14,5 +14,7 @@ namespace DAL.Response.Comments
         public int? LinkedCommentId { get; set; }
 
         public CommentsResponse LinkedComment { get; set; }
+
+        public short CommentState { get; set; }
     }
 }

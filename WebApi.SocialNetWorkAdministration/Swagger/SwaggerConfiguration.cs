@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using NSwag;
-using NSwag.Generation.Processors.Security;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,37 +19,62 @@ namespace AspNetWebApiHomework.Swagger
         /// <param name="services">Коллекция сервисов для DI</param>
         public static void ConfigureSwagger(this IServiceCollection services)
         {
-            services.AddSwaggerDocument(config => {
-                config.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token",
-                    new OpenApiSecurityScheme
+
+            services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("News", new OpenApiInfo { });
+                config.SwaggerDoc("v1", new OpenApiInfo { Title = "Web API", Description = "Web API for social network" });
+                config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Name = "Authorization",
+                    Description = "Bearer authorize",
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                config.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
                     {
-                        Type = OpenApiSecuritySchemeType.ApiKey,
-                        Name = "Authorization",
-                        Description = "Copy 'Bearer ' + valid JWT token into field",
-                        In = OpenApiSecurityApiKeyLocation.Header
-                    }));
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference{ Id="Bearer", Type=ReferenceType.SecurityScheme}
+                        },
+                        new string[] { }
+                    }   
+                });
             });
-            services.AddSwaggerDocument(c =>
-            {
-                c.Title = "News";
-                c.DocumentName = SwagDocParts.News;
-                c.ApiGroupNames = new[] { SwagDocParts.News};
-                c.GenerateXmlObjects = true;
-            });
-            services.AddSwaggerDocument(c =>
-            {
-                c.Title = "User";
-                c.DocumentName = SwagDocParts.User;
-                c.ApiGroupNames = new[] { SwagDocParts.User};
-                c.GenerateXmlObjects = true;
-            });
-            services.AddSwaggerDocument(c =>
-            {
-                c.Title = "Comments";
-                c.DocumentName = SwagDocParts.Comments;
-                c.ApiGroupNames = new[] { SwagDocParts.Comments };
-                c.GenerateXmlObjects = true;
-            });
+            //services.AddSwaggerDocument(config => {
+            //    config.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token",
+            //        new OpenApiSecurityScheme
+            //        {
+            //            Type = OpenApiSecuritySchemeType.ApiKey,
+            //            Name = "Authorization",
+            //            Description = "Copy 'Bearer ' + valid JWT token into field",
+            //            In = OpenApiSecurityApiKeyLocation.Header,
+            //        }));
+            //});
+            //services.AddSwaggerDocument(c =>
+            //{
+            //    c.Title = "News";
+            //    c.DocumentName = SwagDocParts.News;
+            //    c.ApiGroupNames = new[] { SwagDocParts.News};
+            //    c.GenerateXmlObjects = true;
+            //});
+            //services.AddSwaggerDocument(c =>
+            //{
+            //    c.Title = "User";
+            //    c.DocumentName = SwagDocParts.User;
+            //    c.ApiGroupNames = new[] { SwagDocParts.User};
+            //    c.GenerateXmlObjects = true;
+            //});
+            //services.AddSwaggerDocument(c =>
+            //{
+            //    c.Title = "Comments";
+            //    c.DocumentName = SwagDocParts.Comments;
+            //    c.ApiGroupNames = new[] { SwagDocParts.Comments };
+            //    c.GenerateXmlObjects = true;
+            //});
         }
     }
 }

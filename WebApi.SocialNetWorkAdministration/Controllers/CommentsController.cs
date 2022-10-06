@@ -15,7 +15,6 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = SwagDocParts.Comments)]
     public class CommentsController : ControllerBase
     {
         private readonly ICommentsService _commentsService;
@@ -36,8 +35,22 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
             var response = await _commentsService.GetAsync();
             return Ok(_mapper.Map<IEnumerable<CommentsResponse>>(response));
         }
-
-
+        [HttpGet("News/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CommentsResponse>))]
+        public async Task<IActionResult> GetCommentsFromNewsAsync(int id, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Comments/Get was requested.");
+            var response = await _commentsService.GetCommentsFromNews(id);
+            return Ok(_mapper.Map<IEnumerable<CommentsResponse>>(response));
+        }
+        [HttpGet("User/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CommentsResponse>))]
+        public async Task<IActionResult> GetCommentsFromUserAsync(int id, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Comments/Get was requested.");
+            var response = await _commentsService.GetCommentsFromUser(id);
+            return Ok(_mapper.Map<IEnumerable<CommentsResponse>>(response));
+        }
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CommentsResponse))]
         public async Task<IActionResult> GetByIdAsync(int id, CancellationToken cancellationToken)
@@ -52,6 +65,14 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         {
             _logger.LogInformation("Comments/Delete was requested.");
             await _commentsService.DeleteAsync(id);
+            return NoContent();
+        }
+        [HttpDelete("Hide/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> HideAsync(int id, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Comments/Hide was requested.");
+            await _commentsService.HideComments(id);
             return NoContent();
         }
         [HttpPost("Update")]
@@ -69,7 +90,16 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         {
             _logger.LogInformation("Comments/Create was requested.");
             var commentDto = _mapper.Map<CommentsDto>(comment);
-            var response = await _commentsService.LeaveComment(commentDto);
+            var response = await _commentsService.CreateAsync(commentDto);
+            return Ok(_mapper.Map<CommentsResponse>(response));
+        }
+        [HttpPost("Reply")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CommentsResponse))]
+        public async Task<IActionResult> ReplyAsync(NewCommentRequest comment, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Comments/Create was requested.");
+            var commentDto = _mapper.Map<CommentsDto>(comment);
+            var response = await _commentsService.ReplyComment(commentDto);
             return Ok(_mapper.Map<CommentsResponse>(response));
         }
     }

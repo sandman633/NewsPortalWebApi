@@ -18,7 +18,6 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = SwagDocParts.Authentificate)]
     public class AuthController : ControllerBase
     {
         private readonly JwtAuthManager _jwtAuthManager;
@@ -29,9 +28,8 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         private readonly IAuthService _authService;
 
 
-        public AuthController(IAuthService authService, JwtAuthManager jwtAuthManager,IUserPolicyService userPolicyService, IUserRoleService userRoleService, ILogger<AuthController> logger, IMapper mapper) 
+        public AuthController(IAuthService authService, JwtAuthManager jwtAuthManager,IUserPolicyService userPolicyService, ILogger<AuthController> logger, IMapper mapper) 
         {
-            _userRoleService = userRoleService;
             _userPolicyService = userPolicyService;
             _logger = logger;
             _mapper = mapper;

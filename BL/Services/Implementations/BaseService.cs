@@ -4,6 +4,9 @@ using Bl.Services.Interfaces.CRUD;
 using System.Collections.Generic;
 using Repositories.Interfaces.CRUD;
 using System.Threading.Tasks;
+using System;
+using Repositories.Mappings;
+using System.Linq.Expressions;
 
 namespace BL.Services.Implementations
 {
@@ -24,7 +27,7 @@ namespace BL.Services.Implementations
         ///     Asynchronous method for creating entity.
         /// </summary>
         /// <param name="dto"></param>
-        public async Task<TDto> CreateAsync(TDto dto)
+        public virtual async Task<TDto> CreateAsync(TDto dto)
         {
             var entity = await _crudRepository.CreateAsync(dto);
 
@@ -35,7 +38,7 @@ namespace BL.Services.Implementations
         ///     Asynchronous method for deleting entity.
         /// </summary>
         /// <param name="ids"></param>
-        public async Task DeleteAsync(params int[] ids)
+        public virtual async Task DeleteAsync(params int[] ids)
         {
             await _crudRepository.DeleteAsync(ids);
 
@@ -44,7 +47,7 @@ namespace BL.Services.Implementations
         /// <summary>
         ///     Asynchronous method for getting entity.
         /// </summary>
-        public async Task<IEnumerable<TDto>> GetAsync()
+        public virtual async Task<IEnumerable<TDto>> GetAsync()
         {
             return await _crudRepository.GetAsync();
         }
@@ -53,7 +56,7 @@ namespace BL.Services.Implementations
         ///     Asynchronous method for getting entity by id.
         /// </summary>
         /// <param name="id"></param>
-        public async Task<TDto> GetByIdAsync(int id)
+        public virtual async Task<TDto> GetByIdAsync(int id)
         {
             return await _crudRepository.GetByIdAsync(id);
         }
@@ -62,7 +65,7 @@ namespace BL.Services.Implementations
         ///     Asynchronous method for updating entity.
         /// </summary>
         /// <param name="dto"></param>
-        public async Task<TDto> UpdateAsync(TDto dto)
+        public virtual async Task<TDto> UpdateAsync(TDto dto)
         {
             var updatedEntity = await _crudRepository.UpdateAsync(dto);
             return updatedEntity;
