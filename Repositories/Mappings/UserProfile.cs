@@ -16,11 +16,10 @@ namespace Repositories.Mappings
         public UserProfile()
         {
             CreateMap<User, UserDto>().ReverseMap();
-            CreateMap<UserPolicy, UserPolicyDto>().ReverseMap();
             CreateMap<UserDto, UserResponse>().ReverseMap();
             CreateMap<NewUserRequest, UserDto>().ReverseMap();
             CreateMap<UpdateUserRequest, UserDto>().ReverseMap();
-            CreateMap<UserDto, AuthenticatedUserDto>().ReverseMap(); 
+            CreateMap<UserDto, AuthenticatedUserDto>().ReverseMap();
         }
     }
 }

@@ -33,18 +33,14 @@ namespace Model.Domain
         /// <summary>
         /// User roles.
         /// </summary>
-        public ICollection<UserPolicy> UserPolicies { get; set; }
-
+        public ICollection<UserGroup> UserGroups { get; set; }
         /// <summary>
         /// User comments.
         /// </summary>
         public ICollection<Comments> Comments { get; set; }
-
         /// <summary>
         /// User news.
         /// </summary>
         public ICollection<News> News { get; set; }
-
-
     }
 }

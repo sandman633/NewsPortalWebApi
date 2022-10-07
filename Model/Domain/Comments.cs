@@ -52,8 +52,6 @@ namespace Model.Domain
         /// Comment State - DELETED, NOTDELETED
         /// </summary>
         public CommentState CommentState { get; set; }
-
-
     }
 
     public enum CommentState : short

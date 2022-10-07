@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Model.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 

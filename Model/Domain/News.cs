@@ -35,6 +35,5 @@ namespace Model.Domain
         /// Comments
         /// </summary>
         public ICollection<Comments> Сomments { get; set; }
-
     }
 }

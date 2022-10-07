@@ -18,7 +18,7 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure
             WebApiContext context = app.ApplicationServices.CreateScope().ServiceProvider
     .GetRequiredService<WebApiContext>();
             context.Database.EnsureCreated();
-            if (context.Database.IsInMemory()==false)
+            if (context.Database.IsInMemory() == false)
             {
                 if (context.Database.GetPendingMigrations().Any())
                 {
@@ -42,7 +42,7 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure
                     new User
                     {
                         Name = "Doo",
-                        Email =  "Doo@gmail.com",
+                        Email = "Doo@gmail.com",
                         Age = 20,
                         Surname = "Rames",
                         Id = 2,
@@ -138,35 +138,95 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure
                     });
                 #endregion
 
-                #region userPolicies
-                context.UsersPolicies.AddRange(
-                    new UserPolicy
+                #region groups
+                context.Groups.AddRange(
+                    new Group
                     {
                         Id = 1,
-                        UserId = 1,
-                        PolicyType = "News",
-                        PolicyValue = (short)(Permissions.Read | Permissions.Create | Permissions.Update | Permissions.Delete),
+                        GroupName = "Admin"
                     },
-                    new UserPolicy
+                    new Group
                     {
                         Id = 2,
-                        UserId = 1,
+                        GroupName = "News"
+                    },
+                    new Group
+                    {
+                        Id = 3,
+                        GroupName = "Comments"
+                    },
+                    new Group
+                    {
+                        Id = 4,
+                        GroupName = "Admin2"
+                    });
+
+                #endregion
+
+                #region groupPolicies
+                context.GroupPolicies.AddRange(
+                    new GroupPolicy
+                    {
+                        Id = 1,
+                        GroupId = 1,
+                        PolicyType = "News",
+                        PolicyValue = (short)(Permissions.Read | Permissions.Create | Permissions.Update | Permissions.Delete),
+                    },
+                    new GroupPolicy
+                    {
+                        Id = 2,
+                        GroupId = 1,
                         PolicyType = "Comments",
                         PolicyValue = (short)(Permissions.Read | Permissions.Create | Permissions.Update | Permissions.Delete),
                     },
-                    new UserPolicy
+                    new GroupPolicy
                     {
                         Id = 3,
-                        UserId = 2,
+                        GroupId = 3,
+                        PolicyType = "Comments",
+                        PolicyValue = (short)(Permissions.Read | Permissions.Create),
+                    },
+                    new GroupPolicy
+                    {
+                        Id = 4,
+                        GroupId = 2,
                         PolicyType = "News",
                         PolicyValue = (short)(Permissions.Read),
                     },
-                    new UserPolicy
+                    new GroupPolicy
                     {
-                        Id = 4,
-                        UserId = 2,
+                        Id = 5,
+                        GroupId = 4,
                         PolicyType = "Comments",
                         PolicyValue = (short)(Permissions.Read),
+                    });
+                #endregion
+
+                #region userGroups
+                context.UserGroups.AddRange(
+                    new UserGroup
+                    {
+                        Id = 1,
+                        GroupId = 1,
+                        UserId = 1,
+                    },
+                    new UserGroup
+                    {
+                        Id = 2,
+                        GroupId = 2,
+                        UserId = 2,
+                    },
+                    new UserGroup
+                    {
+                        Id = 3,
+                        GroupId = 3,
+                        UserId = 2,
+                    },
+                    new UserGroup
+                    {
+                        Id = 4,
+                        GroupId = 4,
+                        UserId = 1,
                     });
                 #endregion
 

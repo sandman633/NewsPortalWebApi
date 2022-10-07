@@ -23,7 +23,7 @@ namespace DAL.Request.User
         /// <summary>
         /// Age.
         /// </summary>
-        public int Age { get; set; }
+        public int? Age { get; set; }
         /// <summary>
         /// Email.
         /// </summary>

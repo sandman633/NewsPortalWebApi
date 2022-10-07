@@ -1,5 +1,4 @@
-﻿
-namespace DAL.Dto
+﻿namespace DAL.Dto
 {
     /// <summary>
     /// CommentsDto.

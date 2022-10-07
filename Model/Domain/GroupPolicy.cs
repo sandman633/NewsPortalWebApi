@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Dto
+namespace Model.Domain
 {
-    public class UserPolicyDto : BaseDto
+    public class GroupPolicy : BaseEntity
     {
         /// <summary>
-        /// User id.
+        /// Group id.
         /// </summary>
-        public int UserId { get; set; }
+        public int GroupId { get; set; }
 
         /// <summary>
-        /// User.
+        /// Group.
         /// </summary>
-        public UserDto User { get; set; }
+        public Group Group { get; set; }
 
         /// <summary>
         /// Policy Type.
