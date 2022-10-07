@@ -16,13 +16,21 @@ namespace Repositories.Mappings
             originalComments.Text = commentsForUpdate.Text ?? originalComments.Text;
             return originalComments;
         }
-        public static UserDto CommentUpdateMap(UserDto userForUpdate, UserDto originalUser)
+        public static UserDto UserUpdateMap(UserDto userForUpdate, UserDto originalUser)
         {
             originalUser.Email = userForUpdate.Email ?? originalUser.Email;
             originalUser.Name = userForUpdate.Name ?? originalUser.Name;
             originalUser.Surname = userForUpdate.Surname ?? originalUser.Surname;
             originalUser.Age = userForUpdate.Age ?? originalUser.Age;
             return originalUser;
+        }
+        public static GroupPolicyDto GroupPolicyUpdateMap(GroupPolicyDto groupPolicyForUpdate, GroupPolicyDto originalGroupPolicy)
+        {
+            originalGroupPolicy.GroupId = groupPolicyForUpdate.GroupId ?? originalGroupPolicy.GroupId;
+            originalGroupPolicy.PolicyType = groupPolicyForUpdate.PolicyType ?? originalGroupPolicy.PolicyType;
+            originalGroupPolicy.PolicyValue = groupPolicyForUpdate.PolicyValue ?? originalGroupPolicy.PolicyValue;
+            originalGroupPolicy.Group = null;
+            return originalGroupPolicy;
         }
     }
 }

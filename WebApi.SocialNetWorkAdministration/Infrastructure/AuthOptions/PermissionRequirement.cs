@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Model.Domain;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
 {

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace BL.Services.Interfaces
 {
-    public interface IUserPolicyService : ICrudService<UserPolicyDto>
+    public interface IUserGroupService : ICrudService<UserGroupDto>
     {
-        Task<Dictionary<string, short>> GetPolicy(int userId);
+        Task<Dictionary<int, string>> GetGroups(int groupId);
     }
 }
