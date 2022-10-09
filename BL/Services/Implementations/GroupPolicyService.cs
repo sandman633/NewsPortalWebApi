@@ -24,23 +24,15 @@ namespace BL.Services.Implementations
             groupPolicy = MapForUpdateHelper.GroupPolicyUpdateMap(dto, groupPolicy);
             return await base.UpdateAsync(groupPolicy);
         }
-        public async Task<Dictionary<string, short?>> GetPolicies(int groupId)
+        public async Task<IEnumerable<KeyValuePair<string, short?>>> GetPolicies(int groupId)
         {
             var groupPolicy = await _crudRepository.GetByCriteriaAsync(u => u.GroupId == groupId);
-            return groupPolicy.Select(u => KeyValuePair.Create<string, short?>(u.PolicyType, u.PolicyValue)).ToDictionary(kpv => kpv.Key, kpv => kpv.Value);
+            return groupPolicy.Select(u => KeyValuePair.Create<string, short?>(u.PolicyType, u.PolicyValue));
         }
-        public async Task<Dictionary<string, short?>> GetPoliciesForUser(int userId)
+        public async Task<IEnumerable<KeyValuePair<string, short?>>> GetPoliciesForUser(int userId)
         {
             var userPolicy = await _crudRepository.GetByCriteriaAsync(u => u.Group.UserGroups.Select(x=>x.UserId).Contains(userId));
-            Dictionary<string,short?> result = new Dictionary<string,short?>();
-            foreach(var groupPolicy in userPolicy)
-            {
-                if(!result.TryAdd(groupPolicy.PolicyType, groupPolicy.PolicyValue))
-                {
-                    result[groupPolicy.PolicyType] = (short?)((Permissions)result[groupPolicy.PolicyType].Value | (Permissions)groupPolicy.PolicyValue);
-                }
-            }
-            return result;
+            return userPolicy.Select(u => KeyValuePair.Create<string, short?>(u.PolicyType, u.PolicyValue));
         }
     }
 }

@@ -1,12 +1,13 @@
-﻿using Model.Domain;
-using System;
+﻿using System;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
 {
-    public class UserPermission
+    [Flags]
+    public enum Permissions : ushort
     {
-        public string PermissionType { get;}
-        public Permissions Permissions { get; }
+        Read = 1,
+        Create = 2,
+        Update = 4,
+        Delete = 8,
     }
-
 }
