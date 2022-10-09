@@ -7,7 +7,7 @@ namespace BL.Services.Interfaces
 {
     public interface IGroupPolicyService : ICrudService<GroupPolicyDto>
     {
-        Task<Dictionary<string, short?>> GetPolicies(int groupId);
-        Task<Dictionary<string, short?>> GetPoliciesForUser(int userId);
+        Task<IEnumerable<KeyValuePair<string, short?>>> GetPolicies(int groupId);
+        Task<IEnumerable<KeyValuePair<string, short?>>> GetPoliciesForUser(int userId);
     }
 }

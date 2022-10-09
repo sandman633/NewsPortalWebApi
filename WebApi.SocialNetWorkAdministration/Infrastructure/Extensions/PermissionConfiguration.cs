@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Model.Domain;
 using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions

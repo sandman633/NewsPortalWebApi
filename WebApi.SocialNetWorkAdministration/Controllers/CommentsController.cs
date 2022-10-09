@@ -3,6 +3,7 @@ using BL.Services.Interfaces;
 using DAL.Dto;
 using DAL.Request.Comments;
 using DAL.Response.Comments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -51,6 +52,7 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
             var response = await _commentsService.GetCommentsFromUser(id);
             return Ok(_mapper.Map<IEnumerable<CommentsResponse>>(response));
         }
+        [Authorize(Policy = "ReadComments")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CommentsResponse))]
         public async Task<IActionResult> GetByIdAsync(int id, CancellationToken cancellationToken)
