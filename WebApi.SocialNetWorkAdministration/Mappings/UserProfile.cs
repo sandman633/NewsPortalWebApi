@@ -3,7 +3,7 @@ using DAL.Dto;
 using DAL.Request.User;
 using Model.Domain;
 
-namespace Repositories.Mappings
+namespace WebApi.SocialNetWorkAdministration.Mappings
 {
     /// <summary>
     /// Mapping profile for "User" entity.

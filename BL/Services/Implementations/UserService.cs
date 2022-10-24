@@ -5,7 +5,7 @@ using Repositories.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-using Repositories.Mappings;
+using BL.Services.Infrastructure;
 
 namespace BL.Services.Implementations
 {

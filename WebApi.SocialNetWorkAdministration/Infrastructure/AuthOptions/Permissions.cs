@@ -9,7 +9,7 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
         public Permissions Permissions { get; }
     }
 
-    }
+    
 
     [Flags]
     public enum Permissions : ushort
