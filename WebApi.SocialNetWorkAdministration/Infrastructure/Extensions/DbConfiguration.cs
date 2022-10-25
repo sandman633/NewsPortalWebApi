@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Model;
+using Repositories.Implementations;
+using Repositories.Interfaces;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions
 {
@@ -14,6 +16,7 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions
             //builder => builder.MigrationsAssembly(typeof(WebApiContext).Assembly.FullName)));
             services.AddDbContext<WebApiContext>(options =>
             options.UseInMemoryDatabase("TestDataBase"));
+            services.AddTransient<IUnitOfWork<WebApiContext>, UnitOfWork<WebApiContext>>();
 
         }
     }
