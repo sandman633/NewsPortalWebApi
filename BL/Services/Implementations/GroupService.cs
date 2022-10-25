@@ -2,12 +2,13 @@
 using Model.Domain;
 using DAL.Dto;
 using Repositories.Interfaces;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class GroupService : BaseService<GroupDto, Group>, IGroupService
+    public class GroupService : BaseService<GroupDto, Group, IGroupRepository>, IGroupService
     {
-        public GroupService(IGroupRepository crudRepository) : base(crudRepository)
+        public GroupService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
         {
 
         }

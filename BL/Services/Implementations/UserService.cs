@@ -6,12 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Repositories.Mappings;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class UserService : BaseService<UserDto, User>, IUserService
+    public class UserService : BaseService<UserDto, User, IUserRepository>, IUserService
     {
-        public UserService(IUserRepository userRepository) :base(userRepository)
+        public UserService(IUnitOfWork<WebApiContext> unitOfWork) :base(unitOfWork)
         {
 
         }

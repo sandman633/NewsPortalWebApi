@@ -7,12 +7,13 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Repositories.Mappings;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class CommentsService : BaseService<CommentsDto,Comments>, ICommentsService
+    public class CommentsService : BaseService<CommentsDto,Comments, ICommentsRepository>, ICommentsService
     {
-        public CommentsService(ICommentsRepository crudRepository) : base(crudRepository)
+        public CommentsService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
         {
         }
         public override async Task<CommentsDto> UpdateAsync(CommentsDto dto)

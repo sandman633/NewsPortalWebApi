@@ -4,23 +4,25 @@ using Bl.Services.Interfaces.CRUD;
 using System.Collections.Generic;
 using Repositories.Interfaces.CRUD;
 using System.Threading.Tasks;
+using Repositories.Interfaces;
+using Model;
 using System;
-using Repositories.Mappings;
-using System.Linq.Expressions;
 
 namespace BL.Services.Implementations
 {
-    public class BaseService<TDto, TEntity> : ICrudService<TDto>
+    public class BaseService<TDto, TEntity,TRepositoryType> : ICrudService<TDto>
             where TDto : BaseDto
             where TEntity : BaseEntity
+            where TRepositoryType : class,ICrudRepository<TDto, TEntity>
     {
         protected readonly ICrudRepository<TDto, TEntity> _crudRepository;
+        protected readonly IUnitOfWork<WebApiContext> _unitOfWork;
 
 
-        public BaseService(ICrudRepository<TDto, TEntity> crudRepository)
+        public BaseService(IUnitOfWork<WebApiContext> unitOfWork)
         {
-
-            _crudRepository = crudRepository;
+            _crudRepository =  unitOfWork.GetRepository<TDto, TEntity, TRepositoryType>();
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -30,7 +32,7 @@ namespace BL.Services.Implementations
         public virtual async Task<TDto> CreateAsync(TDto dto)
         {
             var entity = await _crudRepository.CreateAsync(dto);
-
+            await _unitOfWork.SaveChangesAsync();
             return entity;
         }
 
@@ -41,7 +43,7 @@ namespace BL.Services.Implementations
         public virtual async Task DeleteAsync(params int[] ids)
         {
             await _crudRepository.DeleteAsync(ids);
-
+            await _unitOfWork.SaveChangesAsync();
         }
 
         /// <summary>
@@ -68,6 +70,7 @@ namespace BL.Services.Implementations
         public virtual async Task<TDto> UpdateAsync(TDto dto)
         {
             var updatedEntity = await _crudRepository.UpdateAsync(dto);
+            await _unitOfWork.SaveChangesAsync();
             return updatedEntity;
         }
     }

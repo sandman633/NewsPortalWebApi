@@ -7,12 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Repositories.Mappings;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class UserGroupService : BaseService<UserGroupDto, UserGroup>, IUserGroupService
+    public class UserGroupService : BaseService<UserGroupDto, UserGroup, IUserGroupRepository>, IUserGroupService
     {
-        public UserGroupService(IUserGroupRepository crudRepository) : base(crudRepository)
+        public UserGroupService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
         {
 
         }

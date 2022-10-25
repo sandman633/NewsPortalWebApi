@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using System;
 using Repositories.Mappings;
 using System.Collections.Generic;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class NewsService : BaseService<NewsDto, News>, INewsService
+    public class NewsService : BaseService<NewsDto, News, INewsRepository>, INewsService
     {
-        public NewsService(INewsRepository crudRepository) : base(crudRepository)
+        public NewsService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
         {
+            
         }
 
         public async Task<IEnumerable<NewsDto>> GetNewsByUser(int userId)
