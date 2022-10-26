@@ -4,7 +4,7 @@ using DAL.Request.UserGroup;
 using DAL.Response.UserGroup;
 using Model.Domain;
 
-namespace Repositories.Mappings
+namespace WebApi.SocialNetWorkAdministration.Mappings
 {
     public class UserGroupProfile : Profile
     {

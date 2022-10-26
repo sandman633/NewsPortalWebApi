@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Repositories.Mappings;
 using WebApi.SocialNetWorkAdministration.Infrastructure;
 using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
 using WebApi.SocialNetWorkAdministration.Infrastructure.Extensions;
@@ -30,7 +29,6 @@ namespace WebApi.SocialNetWorkAdministration
 
             services.AddScoped<JwtAuthManager>();
 
-            services.AddAutoMapper(typeof(Startup));
             services.RegisterRepository();
             services.RegisterServices();
             services.AddCors(options => options.AddDefaultPolicy(builder => 
@@ -39,16 +37,7 @@ namespace WebApi.SocialNetWorkAdministration
                                             .AllowAnyHeader()));
 
             services.DbConfigure(Configuration);
-            services.AddAutoMapper(config =>
-            {
-                config.AddProfile<NewsProfile>();
-                config.AddProfile<UserProfile>();
-                config.AddProfile<CommentProfile>();
-                config.AddProfile<UserGroupProfile>();
-                config.AddProfile<GroupProfile>();
-                config.AddProfile<GroupPolicyProfile>();
-            }
-            );
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers().AddNewtonsoftJson(options =>
                                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 

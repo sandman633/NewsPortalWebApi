@@ -1,6 +1,6 @@
 ﻿using DAL.Dto;
 
-namespace Repositories.Mappings
+namespace BL.Services.Infrastructure
 {
     public static class MapForUpdateHelper
     {
@@ -12,7 +12,7 @@ namespace Repositories.Mappings
         }
         public static CommentsDto CommentUpdateMap(CommentsDto commentsForUpdate, CommentsDto originalComments)
         {
-            
+
             originalComments.Text = commentsForUpdate.Text ?? originalComments.Text;
             return originalComments;
         }
