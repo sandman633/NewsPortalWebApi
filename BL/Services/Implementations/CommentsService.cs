@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using System;
-using Repositories.Mappings;
+using BL.Services.Infrastructure;
 using Model;
 
 namespace BL.Services.Implementations
