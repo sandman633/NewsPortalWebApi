@@ -5,14 +5,15 @@ using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Repositories.Mappings;
 using System;
+using BL.Services.Infrastructure;
+using Model;
 
 namespace BL.Services.Implementations
 {
-    public class GroupPolicyService : BaseService<GroupPolicyDto, GroupPolicy>, IGroupPolicyService
+    public class GroupPolicyService : BaseService<GroupPolicyDto, GroupPolicy, IGroupPolicyRepository>, IGroupPolicyService
     {
-        public GroupPolicyService(IGroupPolicyRepository crudRepository) : base(crudRepository)
+        public GroupPolicyService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
         {
 
         }

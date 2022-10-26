@@ -4,7 +4,7 @@ using DAL.Request.News;
 using DAL.Response.News;
 using Model.Domain;
 
-namespace Repositories.Mappings
+namespace WebApi.SocialNetWorkAdministration.Mappings
 {
     /// <summary>
     /// Mapping profile for "News" entity.

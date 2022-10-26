@@ -43,7 +43,6 @@ namespace Repositories
         {
             var entity = _mapper.Map<TModel>(dto);
             await DbSet.AddAsync(entity);
-            SaveChanges();
             return await GetByIdAsync(entity.Id);
         }
 
@@ -56,7 +55,6 @@ namespace Repositories
         {
             var entities = await DbSet.Where(x => ids.Contains(x.Id)).ToListAsync();
             DbSet.RemoveRange(entities);
-            SaveChanges(); 
         }
         /// <summary>
         /// Asynchronous method for getting entity.
@@ -107,7 +105,6 @@ namespace Repositories
             //if (!DbSet.Contains(entity))
             //throw new ex
             DbSet.Update(entity);
-            SaveChanges();
             var newEntity = await GetByIdAsync(entity.Id);
             return _mapper.Map<TDto>(newEntity);
         }
@@ -116,7 +113,6 @@ namespace Repositories
         {
             var entites = _mapper.Map<IEnumerable<TModel>>(dtoes);
             DbSet.UpdateRange(entites);
-            SaveChanges();
         }
 
 
