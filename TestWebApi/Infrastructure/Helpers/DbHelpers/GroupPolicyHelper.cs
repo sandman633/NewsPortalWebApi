@@ -5,7 +5,7 @@ namespace TestWebApi.Infrastructure.Helpers.DbHelpers
 {
     public static class GroupPolicyHelper
     {
-        public static GroupPolicy GetOne(int id,string policyType,short policyValue)
+        public static GroupPolicy GetOne(int id,int groupId,string policyType,short policyValue)
         {
             return new GroupPolicy
             {
@@ -15,13 +15,16 @@ namespace TestWebApi.Infrastructure.Helpers.DbHelpers
                 PolicyValue = policyValue,
             };
         }
-        public static IEnumerable<GroupPolicy> GetMany(IEnumerable<KeyValuePair<string, short>> groupsPoliciesIdies)
+        public static IEnumerable<GroupPolicy> GetMany(Dictionary<int,IEnumerable<KeyValuePair<string, short>>> groupsPoliciesIdies)
         {
             int id = 1;
-            foreach (KeyValuePair<string, short> groupPolicy in groupsPoliciesIdies)
+            foreach (var groupPolicies in groupsPoliciesIdies)
             {
-                yield return GetOne(id, groupPolicy.Key, groupPolicy.Value);
-                id++;
+                foreach(var groupPolicy in groupPolicies.Value)
+                {
+                    yield return GetOne(id, groupPolicies.Key, groupPolicy.Key, groupPolicy.Value);
+                    id++;
+                }
             }
         }
     }

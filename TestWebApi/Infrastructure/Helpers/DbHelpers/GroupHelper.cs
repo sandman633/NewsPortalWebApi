@@ -5,20 +5,18 @@ namespace TestWebApi.Infrastructure.Helpers.DbHelpers
 {
     public static class GroupHelper
     {
-        public static Group GetOne(int id = 1)
+        public static Group GetOne(string description,int id = 1)
         {
             return new Group
             {
                 Id = id,
-                GroupName = $"Group {id}",
+                GroupName = description,
             };
         }
-        public static IEnumerable<Group> GetMany(int count = 1)
+        public static IEnumerable<Group> GetMany(IDictionary<int,string> groups)
         {
-            for (int i = 0; i < count; i++)
-            {
-                yield return GetOne(i);
-            }
+            foreach(var group in groups)
+                yield return GetOne(group.Value, group.Key);
         }
     }
 

@@ -18,7 +18,7 @@ namespace TestWebApi.Infrastructure.Helpers.DbHelpers
         }
         public static IEnumerable<News> GetMany(int count = 1)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 1; i <= count; i++)
             {
                 yield return GetOne(i);
             }
