@@ -2,6 +2,7 @@
 using BL.Services.Interfaces;
 using DAL.Dto;
 using DAL.Request.News;
+using DAL.Response;
 using DAL.Response.News;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +17,8 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(Result))]
+    [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(Result))]
     public class NewsController : ControllerBase
     {
         private readonly INewsService _newsService;

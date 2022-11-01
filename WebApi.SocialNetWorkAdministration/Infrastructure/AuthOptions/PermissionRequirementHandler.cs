@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.SocialNetWorkAdministration.Infrastructure.Exceptions;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
 {
@@ -10,26 +11,28 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
         {
             bool isHavePermission = false;
             var permissinClaims = context.User.Claims
-                                .Where(x => x.Type == requirement.Permission); 
+                                .Where(x => x.Type == requirement.Permission);
+            var isAuthenticated = context.User.Identities.FirstOrDefault().IsAuthenticated;
+            if (!isAuthenticated)
+            {
+                throw new AuthentificationException(401, "The User is unauthorized!");
+            }
             if (permissinClaims == null)
             {
-                context.Fail();
-                
-                return Task.CompletedTask;
+                throw new AuthentificationException(403,"The User dont have any claims!");
             }
 
-            foreach(var permissinClaim in permissinClaims)
+            foreach (var permissinClaim in permissinClaims)
             {
                 var value = (Permissions)ushort.Parse(permissinClaim.Value);
                 if (value.HasFlag(requirement.PermissionValue))
                     isHavePermission = true;
-                    
             }
 
             if (isHavePermission)
                 context.Succeed(requirement);
             else
-                context.Fail();
+                throw new AuthentificationException(403, "The user does not have permission to access the requested resource",$"User dont have permission {requirement.Permission} with right {requirement.PermissionValue.ToString()}");
 
             return Task.CompletedTask;
         }
