@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using WebApi.SocialNetWorkAdministration.Infrastructure;
 using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
 using WebApi.SocialNetWorkAdministration.Infrastructure.Extensions;
+using WebApi.SocialNetWorkAdministration.Middlewares;
 
 namespace WebApi.SocialNetWorkAdministration
 {
@@ -58,6 +59,9 @@ namespace WebApi.SocialNetWorkAdministration
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -71,7 +75,6 @@ namespace WebApi.SocialNetWorkAdministration
             {
                 endpoints.MapControllers();
             });
-
             app.UseCors();
             app.UseSwagger();
             app.UseSwaggerUI();
