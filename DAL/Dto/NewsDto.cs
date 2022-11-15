@@ -1,4 +1,7 @@
-﻿namespace NewsPortal.DAL.Dto
+﻿using System;
+using System.Collections.Generic;
+
+namespace NewsPortal.DAL.Dto
 {
     /// <summary>
     /// News Dto.

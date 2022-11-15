@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using NewsPortal.Model.Domain;
 using Microsoft.EntityFrameworkCore;
 using NewsPortal.DAL.Dto;
+using NewsPortal.Model;
+using NewsPortal.Model.Domain;
 using Repositories.Interfaces.CRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using NewsPortal.Model;
 
 namespace Repositories
 {

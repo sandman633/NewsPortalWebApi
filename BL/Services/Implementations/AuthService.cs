@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using NewsPortal.BusinessLogic.Services.Interfaces;
 using NewsPortal.DAL.Dto;
-using NewsPortal.NewsPortal.DAL.Dto;
 using System;
 using System.Threading.Tasks;
 

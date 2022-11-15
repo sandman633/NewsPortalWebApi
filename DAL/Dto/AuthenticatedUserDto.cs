@@ -1,6 +1,4 @@
-﻿using NewsPortal.DAL.Dto;
-
-namespace NewsPortal.NewsPortal.DAL.Dto
+﻿namespace NewsPortal.DAL.Dto
 {
     /// <summary>
     /// DTO for authenticated User.

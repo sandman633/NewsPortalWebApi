@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\NewsPortal.DAL.csproj" />
-    <ProjectReference Include="..\Model\NewsPortal.NewsPortal.Model.csproj" />
+    <ProjectReference Include="..\Model\NewsPortal.Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\NewsPortal.NewsPortal.Model.csproj" />
+    <ProjectReference Include="..\Model\NewsPortal.Model.csproj" />
     <ProjectReference Include="..\Repositories\NewsPortal.Repositories.csproj" />
   </ItemGroup>
 
