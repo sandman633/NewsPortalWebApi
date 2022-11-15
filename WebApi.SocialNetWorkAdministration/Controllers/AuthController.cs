@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
-using NewsPortal.NewsPortal.DAL.Dto;
+using NewsPortal.DAL.Dto;
 
 namespace NewsPortal.WebApi.Controllers
 {

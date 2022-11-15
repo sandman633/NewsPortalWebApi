@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using WebApi.SocialNetWorkAdministration.Swagger;
 
 namespace NewsPortal.WebApi.Controllers
 {

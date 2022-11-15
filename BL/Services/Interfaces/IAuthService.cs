@@ -1,5 +1,4 @@
 ﻿using NewsPortal.DAL.Dto;
-using NewsPortal.NewsPortal.DAL.Dto;
 using System.Threading.Tasks;
 
 namespace NewsPortal.BusinessLogic.Services.Interfaces
