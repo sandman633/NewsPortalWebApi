@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApi.SocialNetWorkAdministration": {
+    "NewsPortal.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger/index.html",
