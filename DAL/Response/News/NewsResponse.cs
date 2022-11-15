@@ -1,8 +1,8 @@
-﻿using DAL.Response.Comments;
+﻿using NewsPortal.DAL.Response.Comments;
 using System.Collections.Generic;
 
 
-namespace DAL.Response.News
+namespace NewsPortal.DAL.Response.News
 {
     public class NewsResponse
     {

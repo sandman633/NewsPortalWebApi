@@ -1,7 +1,8 @@
-﻿using BL.Services;
-using BL.Services.Implementations;
-using BL.Services.Interfaces;
+﻿using NewsPortal.BusinessLogic.Services;
+using NewsPortal.BusinessLogic.Services.Implementations;
+using NewsPortal.BusinessLogic.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using NewsPortal.BusinessLogic.Services.Implementations;
 using Repositories.Implementations;
 using System;
 using System.Collections.Generic;

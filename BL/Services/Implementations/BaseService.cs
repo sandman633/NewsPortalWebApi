@@ -1,6 +1,6 @@
 ﻿using Model.Domain;
-using DAL.Dto;
-using Bl.Services.Interfaces.CRUD;
+using NewsPortal.DAL.Dto;
+using NewsPortal.BusinessLogic.Services.Interfaces.CRUD;
 using System.Collections.Generic;
 using Repositories.Interfaces.CRUD;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using Repositories.Interfaces;
 using Model;
 using System;
 
-namespace BL.Services.Implementations
+namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class BaseService<TDto, TEntity,TRepositoryType> : ICrudService<TDto>
             where TDto : BaseDto

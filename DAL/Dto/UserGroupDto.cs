@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DAL.Dto
+namespace NewsPortal.DAL.Dto
 {
     public class UserGroupDto : BaseDto
     {

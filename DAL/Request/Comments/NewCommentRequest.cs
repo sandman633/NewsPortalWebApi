@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Request.Comments
+namespace NewsPortal.DAL.Request.Comments
 {
     /// <summary>
     /// Request new comment model.

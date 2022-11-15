@@ -1,4 +1,4 @@
-﻿namespace DAL.Dto
+﻿namespace NewsPortal.DAL.Dto
 {
     /// <summary>
     /// Link relationship between <see cref="UserDto"/> and <see cref="RoleDto"/>.

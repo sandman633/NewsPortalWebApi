@@ -1,4 +1,4 @@
-﻿namespace DAL.Request.Group
+﻿namespace NewsPortal.DAL.Request.Group
 {
     public class UpdateGroupRequest : NewGroupRequest
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace DAL.Response.Comments
+namespace NewsPortal.DAL.Response.Comments
 {
     public class CommentsResponse 
     {

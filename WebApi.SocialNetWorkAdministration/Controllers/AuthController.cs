@@ -1,17 +1,16 @@
-﻿using BL.Services.Interfaces;
+﻿using NewsPortal.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using DAL.Dto;
-using DAL.Request.Authentificate;
+using NewsPortal.DAL.Request.Authentificate;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
-
+using NewsPortal.NewsPortal.DAL.Dto;
 
 namespace NewsPortal.WebApi.Controllers
 {

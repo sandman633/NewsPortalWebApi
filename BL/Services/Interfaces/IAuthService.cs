@@ -1,7 +1,8 @@
-﻿using DAL.Dto;
+﻿using NewsPortal.DAL.Dto;
+using NewsPortal.NewsPortal.DAL.Dto;
 using System.Threading.Tasks;
 
-namespace BL.Services.Interfaces
+namespace NewsPortal.BusinessLogic.Services.Interfaces
 {
     /// <summary>
     /// Interface for an authentification service.

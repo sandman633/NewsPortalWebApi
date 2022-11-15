@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Model.Domain;
 using Microsoft.EntityFrameworkCore;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
 using System.Linq;
 using System.Text;

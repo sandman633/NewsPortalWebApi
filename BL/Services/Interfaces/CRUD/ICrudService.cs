@@ -1,4 +1,4 @@
-﻿namespace Bl.Services.Interfaces.CRUD
+﻿namespace NewsPortal.BusinessLogic.Services.Interfaces.CRUD
 {
     /// <summary>
     /// Interface for base operations(CRUD).

@@ -1,14 +1,13 @@
-﻿using BL.Services.Interfaces;
+﻿using NewsPortal.BusinessLogic.Services.Interfaces;
 using Model.Domain;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System;
 using Model;
 
-namespace BL.Services.Implementations
+namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class UserGroupService : BaseService<UserGroupDto, UserGroup, IUserGroupRepository>, IUserGroupService
     {

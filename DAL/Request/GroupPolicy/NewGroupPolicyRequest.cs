@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Request.GroupPolicy
+namespace NewsPortal.DAL.Request.GroupPolicy
 {
     /// <summary>
     /// Request new Group Policy model.

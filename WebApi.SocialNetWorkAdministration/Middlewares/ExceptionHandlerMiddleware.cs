@@ -1,4 +1,4 @@
-﻿using DAL.Response;
+﻿using NewsPortal.DAL.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using NewsPortal.WebApi.Infrastructure.Exceptions;

@@ -1,4 +1,4 @@
-﻿namespace DAL.Request.User
+﻿namespace NewsPortal.DAL.Request.User
 {
     /// <summary>
     /// User response.

@@ -1,8 +1,8 @@
-﻿using Bl.Services.Interfaces.CRUD;
-using DAL.Dto;
+﻿using NewsPortal.BusinessLogic.Services.Interfaces.CRUD;
+using NewsPortal.DAL.Dto;
 using System.Threading.Tasks;
 
-namespace BL.Services.Interfaces
+namespace NewsPortal.BusinessLogic.Services.Interfaces
 {
     public interface IUserService : ICrudService<UserDto>
     {

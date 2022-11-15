@@ -19,7 +19,7 @@ namespace Model.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("DAL.Domain.Comments", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.Comments", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace Model.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("DAL.Domain.News", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.News", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ namespace Model.Migrations
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("DAL.Domain.Role", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +90,7 @@ namespace Model.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("DAL.Domain.User", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace Model.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DAL.Domain.UserRole", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.UserRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -139,19 +139,19 @@ namespace Model.Migrations
                     b.ToTable("UsersRoles");
                 });
 
-            modelBuilder.Entity("DAL.Domain.Comments", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.Comments", b =>
                 {
-                    b.HasOne("DAL.Domain.Comments", "LinkedComment")
+                    b.HasOne("NewsPortal.DAL.Domain.Comments", "LinkedComment")
                         .WithMany()
                         .HasForeignKey("LinkedCommentId");
 
-                    b.HasOne("DAL.Domain.News", "News")
+                    b.HasOne("NewsPortal.DAL.Domain.News", "News")
                         .WithMany("Сomments")
                         .HasForeignKey("NewsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Domain.User", "User")
+                    b.HasOne("NewsPortal.DAL.Domain.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -164,9 +164,9 @@ namespace Model.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Domain.News", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.News", b =>
                 {
-                    b.HasOne("DAL.Domain.User", "User")
+                    b.HasOne("NewsPortal.DAL.Domain.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -175,15 +175,15 @@ namespace Model.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Domain.UserRole", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.UserRole", b =>
                 {
-                    b.HasOne("DAL.Domain.Role", "Role")
+                    b.HasOne("NewsPortal.DAL.Domain.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Domain.User", "User")
+                    b.HasOne("NewsPortal.DAL.Domain.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -194,17 +194,17 @@ namespace Model.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Domain.News", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.News", b =>
                 {
                     b.Navigation("Сomments");
                 });
 
-            modelBuilder.Entity("DAL.Domain.Role", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.Role", b =>
                 {
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("DAL.Domain.User", b =>
+            modelBuilder.Entity("NewsPortal.DAL.Domain.User", b =>
                 {
                     b.Navigation("UserRoles");
                 });

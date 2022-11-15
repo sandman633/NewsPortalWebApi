@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace DAL.Dto
+namespace NewsPortal.DAL.Dto
 {
     /// <summary>
     /// BaseDto.

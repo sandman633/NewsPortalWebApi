@@ -1,4 +1,4 @@
-﻿namespace DAL.Request.GroupPolicy
+﻿namespace NewsPortal.DAL.Request.GroupPolicy
 {
     /// <summary>
     /// Request update Group Policy model.

@@ -1,4 +1,4 @@
-﻿namespace DAL.Request.UserGroup
+﻿namespace NewsPortal.DAL.Request.UserGroup
 {
     /// <summary>
     /// Request update user group model.

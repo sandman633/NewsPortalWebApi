@@ -1,10 +1,10 @@
-﻿using BL.Services.Interfaces;
+﻿using NewsPortal.BusinessLogic.Services.Interfaces;
 using Model.Domain;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
 using Model;
 
-namespace BL.Services.Implementations
+namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class GroupService : BaseService<GroupDto, Group, IGroupRepository>, IGroupService
     {

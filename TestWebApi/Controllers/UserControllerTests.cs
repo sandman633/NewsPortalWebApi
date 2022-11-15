@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoMapper;
-using BL.Services.Implementations;
-using DAL.Request.User;
+using NewsPortal.BusinessLogic.Services.Implementations;
+using NewsPortal.DAL.Request.User;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Repositories.Interfaces;

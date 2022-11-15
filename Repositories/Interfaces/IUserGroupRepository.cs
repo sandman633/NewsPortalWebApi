@@ -1,5 +1,5 @@
 ﻿using Model.Domain;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
 using Repositories.Interfaces.CRUD;
 
 namespace Repositories.Interfaces

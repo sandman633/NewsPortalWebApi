@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Response
+namespace NewsPortal.DAL.Response
 {
     public class Result<T> : Result
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DAL.Request.Authentificate
+﻿namespace NewsPortal.DAL.Request.Authentificate
 {
     /// <summary>
     /// Authentication request.

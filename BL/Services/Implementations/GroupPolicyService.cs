@@ -1,15 +1,15 @@
-﻿using BL.Services.Interfaces;
+﻿using NewsPortal.BusinessLogic.Services.Interfaces;
 using Model.Domain;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-using BL.Services.Infrastructure;
+using NewsPortal.BusinessLogic.Services.Infrastructure;
 using Model;
 
-namespace BL.Services.Implementations
+namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class GroupPolicyService : BaseService<GroupPolicyDto, GroupPolicy, IGroupPolicyRepository>, IGroupPolicyService
     {

@@ -1,6 +1,6 @@
-﻿using DAL.Dto;
+﻿using NewsPortal.DAL.Dto;
 
-namespace BL.Services.Infrastructure
+namespace NewsPortal.BusinessLogic.Services.Infrastructure
 {
     public static class MapForUpdateHelper
     {

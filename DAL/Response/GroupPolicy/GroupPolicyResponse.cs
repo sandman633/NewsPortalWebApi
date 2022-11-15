@@ -1,4 +1,4 @@
-﻿namespace DAL.Response.GroupPolicy
+﻿namespace NewsPortal.DAL.Response.GroupPolicy
 {
     /// <summary>
     /// Group Policy response.

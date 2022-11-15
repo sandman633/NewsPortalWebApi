@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Request.User
+namespace NewsPortal.DAL.Request.User
 {
     /// <summary>
     /// Update request for user.

@@ -1,4 +1,4 @@
-﻿using DAL.Dto;
+﻿using NewsPortal.DAL.Dto;
 using Model;
 using Model.Domain;
 using Moq;

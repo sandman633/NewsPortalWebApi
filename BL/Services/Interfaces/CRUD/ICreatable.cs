@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Bl.Services.Interfaces.CRUD
+namespace NewsPortal.BusinessLogic.Services.Interfaces.CRUD
 {
     /// <summary>
     /// Interface for creating new entity.

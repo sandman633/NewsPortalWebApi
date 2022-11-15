@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using DAL.Dto;
+using NewsPortal.DAL.Dto;
+using NewsPortal.NewsPortal.DAL.Dto;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using BL.Services.Interfaces;
 
-namespace BL.Services.Implementations
+namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class AuthService : IAuthService
     {

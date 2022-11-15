@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Request.News
+namespace NewsPortal.DAL.Request.News
 {
     /// <summary>
     /// Request new News model.

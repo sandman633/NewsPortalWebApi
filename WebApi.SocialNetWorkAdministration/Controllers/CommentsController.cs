@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BL.Services.Interfaces;
-using DAL.Dto;
-using DAL.Request.Comments;
-using DAL.Response.Comments;
+using NewsPortal.BusinessLogic.Services.Interfaces;
+using NewsPortal.DAL.Dto;
+using NewsPortal.DAL.Request.Comments;
+using NewsPortal.DAL.Response.Comments;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

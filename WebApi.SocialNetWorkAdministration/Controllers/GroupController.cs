@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BL.Services.Interfaces;
-using DAL.Dto;
-using DAL.Request.Group;
-using DAL.Response.Group;
+using NewsPortal.BusinessLogic.Services.Interfaces;
+using NewsPortal.DAL.Dto;
+using NewsPortal.DAL.Request.Group;
+using NewsPortal.DAL.Response.Group;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

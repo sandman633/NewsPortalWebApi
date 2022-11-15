@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Model;
 using Model.Domain;
@@ -9,7 +7,7 @@ using System;
 using System.Linq;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure
+namespace NewsPortal.WebApi.Infrastructure
 {
     public static class SeedData
     {
@@ -191,14 +189,14 @@ namespace WebApi.SocialNetWorkAdministration.Infrastructure
                         Id = 4,
                         GroupId = 2,
                         PolicyType = "News",
-                        PolicyValue = (short)(Permissions.Read),
+                        PolicyValue = (short)Permissions.Read,
                     },
                     new GroupPolicy
                     {
                         Id = 5,
                         GroupId = 4,
                         PolicyType = "Comments",
-                        PolicyValue = (short)(Permissions.Read),
+                        PolicyValue = (short)Permissions.Read,
                     });
                 #endregion
 

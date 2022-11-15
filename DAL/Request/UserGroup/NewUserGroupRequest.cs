@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Request.UserGroup
+namespace NewsPortal.DAL.Request.UserGroup
 {
     /// <summary>
     /// Request new user group model.

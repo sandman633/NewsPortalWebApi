@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using DAL.Dto;
-using DAL.Request.Group;
-using DAL.Response.Group;
+using NewsPortal.DAL.Dto;
+using NewsPortal.DAL.Request.Group;
+using NewsPortal.DAL.Response.Group;
 using Model.Domain;
 
 namespace NewsPortal.WebApi.Mappings

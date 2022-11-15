@@ -1,4 +1,4 @@
-﻿namespace DAL.Response.Group
+﻿namespace NewsPortal.DAL.Response.Group
 {
     /// <summary>
     /// Group response.

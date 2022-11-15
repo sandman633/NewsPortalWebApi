@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Bl.Services.Interfaces.CRUD
+namespace NewsPortal.BusinessLogic.Services.Interfaces.CRUD
 {
     /// <summary>
     /// Interface for getting all entities.

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NewsPortal.DAL.Dto;
 
-namespace DAL.Dto
+namespace NewsPortal.NewsPortal.DAL.Dto
 {
     /// <summary>
     /// DTO for authenticated User.

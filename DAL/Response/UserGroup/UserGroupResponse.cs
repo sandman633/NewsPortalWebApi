@@ -1,4 +1,4 @@
-﻿namespace DAL.Response.UserGroup
+﻿namespace NewsPortal.DAL.Response.UserGroup
 {
     /// <summary>
     /// User response.

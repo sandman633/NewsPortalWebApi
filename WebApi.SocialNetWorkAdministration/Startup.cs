@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApi.SocialNetWorkAdministration.Infrastructure;
+using NewsPortal.WebApi.Infrastructure;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
 using NewsPortal.WebApi.Infrastructure.Extensions;
 using NewsPortal.WebApi.Middlewares;
