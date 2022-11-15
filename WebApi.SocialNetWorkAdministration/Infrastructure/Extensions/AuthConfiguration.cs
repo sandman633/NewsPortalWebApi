@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
-using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
+using NewsPortal.WebApi.Infrastructure.AuthOptions;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions
+namespace NewsPortal.WebApi.Infrastructure.Extensions
 {
     public static class AuthConfiguration
     {

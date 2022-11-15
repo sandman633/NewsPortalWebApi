@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions
+namespace NewsPortal.WebApi.Infrastructure.Extensions
 {
     public static class ServicesConfiguration
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
+namespace NewsPortal.WebApi.Infrastructure.AuthOptions
 {
 
     public class UserPermission

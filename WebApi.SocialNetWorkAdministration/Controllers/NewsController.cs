@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApi.SocialNetWorkAdministration.Controllers
+namespace NewsPortal.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

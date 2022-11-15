@@ -1,4 +1,3 @@
-using AspNetWebApiHomework.Swagger;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,11 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApi.SocialNetWorkAdministration.Infrastructure;
-using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
-using WebApi.SocialNetWorkAdministration.Infrastructure.Extensions;
-using WebApi.SocialNetWorkAdministration.Middlewares;
+using NewsPortal.WebApi.Infrastructure.AuthOptions;
+using NewsPortal.WebApi.Infrastructure.Extensions;
+using NewsPortal.WebApi.Middlewares;
+using NewsPortal.WebApi.Swagger;
 
-namespace WebApi.SocialNetWorkAdministration
+namespace NewsPortal.WebApi
 {
     public class Startup
     {
@@ -32,7 +32,7 @@ namespace WebApi.SocialNetWorkAdministration
 
             services.RegisterRepository();
             services.RegisterServices();
-            services.AddCors(options => options.AddDefaultPolicy(builder => 
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
                                             builder.AllowAnyOrigin()
                                             .AllowAnyMethod()
                                             .AllowAnyHeader()));
@@ -43,7 +43,7 @@ namespace WebApi.SocialNetWorkAdministration
                                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSingleton<IAuthorizationHandler, PermissionRequirementHandler>();
-    
+
             services.AddJwtAuthentification(authoptions);
             services.AddPermissions();
 
@@ -79,7 +79,7 @@ namespace WebApi.SocialNetWorkAdministration
             app.UseSwagger();
             app.UseSwaggerUI();
             SeedData.Seed(app);
-            
+
         }
     }
 }

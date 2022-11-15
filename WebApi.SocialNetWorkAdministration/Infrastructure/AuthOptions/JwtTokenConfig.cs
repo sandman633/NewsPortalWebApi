@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
+namespace NewsPortal.WebApi.Infrastructure.AuthOptions
 {
     public class JwtTokenConfig
     {

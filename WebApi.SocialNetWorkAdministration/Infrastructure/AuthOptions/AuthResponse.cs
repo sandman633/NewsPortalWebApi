@@ -1,5 +1,5 @@
-﻿namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
-{ 
+﻿namespace NewsPortal.WebApi.Infrastructure.AuthOptions
+{
     internal class AuthResponse
     {
         public object Id { get; set; }

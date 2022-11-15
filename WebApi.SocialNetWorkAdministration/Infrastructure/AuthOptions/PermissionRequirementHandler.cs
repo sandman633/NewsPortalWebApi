@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using NewsPortal.WebApi.Infrastructure.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApi.SocialNetWorkAdministration.Infrastructure.Exceptions;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
+namespace NewsPortal.WebApi.Infrastructure.AuthOptions
 {
     public class PermissionRequirementHandler : AuthorizationHandler<PermissionRequirement>
     {

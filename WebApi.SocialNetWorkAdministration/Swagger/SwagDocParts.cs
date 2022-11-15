@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.SocialNetWorkAdministration.Swagger
+namespace NewsPortal.WebApi.Swagger
 {
     /// <summary>
     /// Константы для указания частей API в Swagger.

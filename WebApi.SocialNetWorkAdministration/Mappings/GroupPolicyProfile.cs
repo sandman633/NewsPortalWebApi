@@ -4,7 +4,7 @@ using DAL.Request.GroupPolicy;
 using DAL.Response.GroupPolicy;
 using Model.Domain;
 
-namespace WebApi.SocialNetWorkAdministration.Mappings
+namespace NewsPortal.WebApi.Mappings
 {
     public class GroupPolicyProfile : Profile
     {

@@ -4,7 +4,7 @@ using DAL.Request.Group;
 using DAL.Response.Group;
 using Model.Domain;
 
-namespace WebApi.SocialNetWorkAdministration.Mappings
+namespace NewsPortal.WebApi.Mappings
 {
     public class GroupProfile : Profile
     {

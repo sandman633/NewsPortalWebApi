@@ -5,7 +5,7 @@ using Model;
 using Repositories.Implementations;
 using Repositories.Interfaces;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.Extensions
+namespace NewsPortal.WebApi.Infrastructure.Extensions
 {
     public static class DbConfiguration
     {

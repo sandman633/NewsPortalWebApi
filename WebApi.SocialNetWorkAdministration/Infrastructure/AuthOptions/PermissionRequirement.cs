@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions
+namespace NewsPortal.WebApi.Infrastructure.AuthOptions
 {
     public class PermissionRequirement : IAuthorizationRequirement
     {

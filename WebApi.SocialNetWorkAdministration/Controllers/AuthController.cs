@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BL.Services.Interfaces;
+﻿using BL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +10,10 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
-using WebApi.SocialNetWorkAdministration.Swagger;
+using NewsPortal.WebApi.Infrastructure.AuthOptions;
 
-namespace WebApi.SocialNetWorkAdministration.Controllers
+
+namespace NewsPortal.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -24,9 +23,7 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         private readonly IGroupPolicyService _groupPolicyService;
         private readonly ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
-
-
-        public AuthController(IAuthService authService, JwtAuthManager jwtAuthManager, IGroupPolicyService groupPolicyService, ILogger<AuthController> logger) 
+        public AuthController(IAuthService authService, JwtAuthManager jwtAuthManager, IGroupPolicyService groupPolicyService, ILogger<AuthController> logger)
         {
             _groupPolicyService = groupPolicyService;
             _logger = logger;
@@ -59,8 +56,6 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
         }
 
 
-
-
         /// <summary>
         /// Returns auth info for given user.
         /// </summary>
@@ -71,7 +66,7 @@ namespace WebApi.SocialNetWorkAdministration.Controllers
             List<Claim> claims = new List<Claim>();
             foreach (var policy in policies)
             {
-                claims.Add(new Claim(policy.Key,policy.Value.ToString()));
+                claims.Add(new Claim(policy.Key, policy.Value.ToString()));
             }
 
             claims.Add(new Claim(ClaimTypes.Name, user.Email));

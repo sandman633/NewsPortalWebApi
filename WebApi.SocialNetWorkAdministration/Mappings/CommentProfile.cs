@@ -4,7 +4,7 @@ using DAL.Request.Comments;
 using DAL.Response.Comments;
 using Model.Domain;
 
-namespace WebApi.SocialNetWorkAdministration.Mappings
+namespace NewsPortal.WebApi.Mappings
 {
     /// <summary>
     /// Mapping profile for "Comments" entity.

@@ -7,7 +7,7 @@ using Model;
 using Model.Domain;
 using System;
 using System.Linq;
-using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
+using NewsPortal.WebApi.Infrastructure.AuthOptions;
 
 namespace WebApi.SocialNetWorkAdministration.Infrastructure
 {

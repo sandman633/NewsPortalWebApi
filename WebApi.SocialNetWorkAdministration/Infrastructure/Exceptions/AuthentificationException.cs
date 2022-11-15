@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace WebApi.SocialNetWorkAdministration.Infrastructure.Exceptions
+namespace NewsPortal.WebApi.Infrastructure.Exceptions
 {
     public class AuthentificationException : Exception
     {
-        public AuthentificationException(int statusCode, string messageText,string description, Exception innerException):base(messageText, innerException) 
+        public AuthentificationException(int statusCode, string messageText, string description, Exception innerException) : base(messageText, innerException)
         {
             StatusCode = statusCode;
             Description = description;

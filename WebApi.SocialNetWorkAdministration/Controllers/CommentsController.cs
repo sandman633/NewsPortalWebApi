@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WebApi.SocialNetWorkAdministration.Swagger;
 
-namespace WebApi.SocialNetWorkAdministration.Controllers
+namespace NewsPortal.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
