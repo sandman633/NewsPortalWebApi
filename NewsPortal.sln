@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31825.309
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.BusinessLogic", "NewsPortal.BusinessLogic\NewsPortal.BusinessLogic.csproj", "{20E69CDA-C301-432F-98B3-E41CEAF0CE6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.DAL", "NewsPortal.DAL\NewsPortal.DAL.csproj", "{5DDF3E1E-C7C6-4B80-9EB6-463F0E58EB37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Model", "NewsPortal.Model\NewsPortal.Model.csproj", "{5DF17FD5-22DF-4BFC-9B14-045C8E5F3175}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Repositories", "NewsPortal.Repositories\NewsPortal.Repositories.csproj", "{02EC5294-4D1F-44BD-8D3A-519CA390AAA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Tests", "NewsPortal.Tests\NewsPortal.Tests.csproj", "{7BD6C4E1-7EEC-44C0-A526-E5DA1D84B9CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.WebApi", "NewsPortal.WebApi\NewsPortal.WebApi.csproj", "{78295F15-F0C5-4136-86D6-BB8B786415D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20E69CDA-C301-432F-98B3-E41CEAF0CE6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20E69CDA-C301-432F-98B3-E41CEAF0CE6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20E69CDA-C301-432F-98B3-E41CEAF0CE6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20E69CDA-C301-432F-98B3-E41CEAF0CE6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDF3E1E-C7C6-4B80-9EB6-463F0E58EB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDF3E1E-C7C6-4B80-9EB6-463F0E58EB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDF3E1E-C7C6-4B80-9EB6-463F0E58EB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDF3E1E-C7C6-4B80-9EB6-463F0E58EB37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF17FD5-22DF-4BFC-9B14-045C8E5F3175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF17FD5-22DF-4BFC-9B14-045C8E5F3175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF17FD5-22DF-4BFC-9B14-045C8E5F3175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF17FD5-22DF-4BFC-9B14-045C8E5F3175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EC5294-4D1F-44BD-8D3A-519CA390AAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EC5294-4D1F-44BD-8D3A-519CA390AAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EC5294-4D1F-44BD-8D3A-519CA390AAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EC5294-4D1F-44BD-8D3A-519CA390AAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD6C4E1-7EEC-44C0-A526-E5DA1D84B9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD6C4E1-7EEC-44C0-A526-E5DA1D84B9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD6C4E1-7EEC-44C0-A526-E5DA1D84B9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD6C4E1-7EEC-44C0-A526-E5DA1D84B9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78295F15-F0C5-4136-86D6-BB8B786415D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78295F15-F0C5-4136-86D6-BB8B786415D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78295F15-F0C5-4136-86D6-BB8B786415D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78295F15-F0C5-4136-86D6-BB8B786415D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62CB347B-9D36-442E-84D0-56940CA5991F}
+	EndGlobalSection
+EndGlobal
