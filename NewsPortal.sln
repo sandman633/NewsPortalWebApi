@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Model", "Model\N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.BusinessLogic", "BL\NewsPortal.BusinessLogic.csproj", "{92269F7C-0F49-43DF-AE8A-7BBEA1B7BB1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{58908ABB-5ED0-48AD-9D6C-A5DF48489721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Repositories", "Repositories\NewsPortal.Repositories.csproj", "{58908ABB-5ED0-48AD-9D6C-A5DF48489721}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.DAL", "DAL\NewsPortal.DAL.csproj", "{D04F0036-F102-4F38-A092-7BA0EFF778FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWebApi", "TestWebApi\TestWebApi.csproj", "{1EF5DD57-09C5-4501-B4AF-7FBCD277B3D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Tests", "TestWebApi\NewsPortal.Tests.csproj", "{1EF5DD57-09C5-4501-B4AF-7FBCD277B3D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Model\NewsPortal.Model.csproj" />
-    <ProjectReference Include="..\Repositories\Repositories.csproj" />
+    <ProjectReference Include="..\Repositories\NewsPortal.Repositories.csproj" />
   </ItemGroup>
 
   <ItemGroup>
