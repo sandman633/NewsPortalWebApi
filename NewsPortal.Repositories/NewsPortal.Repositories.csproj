@@ -6,15 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\NewsPortal.Model.csproj" />
-    <ProjectReference Include="..\Repositories\NewsPortal.Repositories.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\CRUD\" />
+    <ProjectReference Include="..\NewsPortal.DAL\NewsPortal.DAL.csproj" />
+    <ProjectReference Include="..\NewsPortal.Model\NewsPortal.Model.csproj" />
   </ItemGroup>
 
 </Project>
