@@ -12,8 +12,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TestWebApi.Infrastructure.Helpers;
-using WebApi.SocialNetWorkAdministration.Controllers;
-using WebApi.SocialNetWorkAdministration.Mappings;
+using NewsPortal.WebApi.Controllers;
+using NewsPortal.WebApi.Mappings;
 using Xunit;
 
 namespace TestWebApi.Controllers

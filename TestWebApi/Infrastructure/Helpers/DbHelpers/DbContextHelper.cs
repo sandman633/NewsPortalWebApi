@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Model;
 using System.Collections.Generic;
 using System.Linq;
-using WebApi.SocialNetWorkAdministration.Infrastructure.AuthOptions;
+using NewsPortal.WebApi.Infrastructure.AuthOptions;
 
 namespace TestWebApi.Infrastructure.Helpers.DbHelpers
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using WebApi.SocialNetWorkAdministration;
+using NewsPortal.WebApi;
 
 namespace TestWebApi.Infrastructure.Helpers
 {
