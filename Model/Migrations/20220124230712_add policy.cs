@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Model.Migrations
+namespace NewsPortal.Model.Migrations
 {
     public partial class addpolicy : Migration
     {

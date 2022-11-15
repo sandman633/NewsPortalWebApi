@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Model;
 using System.Collections.Generic;
 using System.Linq;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
+using NewsPortal.Model;
 
 namespace TestWebApi.Infrastructure.Helpers.DbHelpers
 {

@@ -1,5 +1,5 @@
 using NewsPortal.DAL.Dto;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using Repositories.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;

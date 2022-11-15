@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Model;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using System;
 using System.Linq;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
+using NewsPortal.Model;
 
 namespace NewsPortal.WebApi.Infrastructure
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using Microsoft.EntityFrameworkCore;
 using NewsPortal.DAL.Dto;
 using Repositories.Interfaces.CRUD;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Model;
+using NewsPortal.Model;
 
 namespace Repositories
 {

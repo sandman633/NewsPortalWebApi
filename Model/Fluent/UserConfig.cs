@@ -1,8 +1,8 @@
-﻿using Model.Domain;
+﻿using NewsPortal.Model.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Model.Fluent
+namespace NewsPortal.Model.Fluent
 {
     public class UserConfig : IEntityTypeConfiguration<User>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Model.Domain
+namespace NewsPortal.Model.Domain
 {
     public class GroupPolicy : BaseEntity
     {

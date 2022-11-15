@@ -2,7 +2,7 @@
 using NewsPortal.DAL.Dto;
 using NewsPortal.DAL.Request.Comments;
 using NewsPortal.DAL.Response.Comments;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 
 namespace NewsPortal.WebApi.Mappings
 {

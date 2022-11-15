@@ -2,7 +2,7 @@
 using NewsPortal.DAL.Dto;
 using NewsPortal.DAL.Request.News;
 using NewsPortal.DAL.Response.News;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 
 namespace NewsPortal.WebApi.Mappings
 {

@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Model;
+using NewsPortal.Model;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Model.Migrations
+namespace NewsPortal.Model.Migrations
 {
     [DbContext(typeof(WebApiContext))]
     [Migration("20220109122829_update2.0")]

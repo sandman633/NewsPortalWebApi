@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.Domain
+namespace NewsPortal.Model.Domain
 {
     public class User : BaseEntity
     {

@@ -1,9 +1,9 @@
 ﻿using NewsPortal.DAL.Dto;
-using Model;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using Moq;
 using Repositories.Implementations;
 using Repositories.Interfaces;
+using NewsPortal.Model;
 
 namespace TestWebApi.Infrastructure.Helpers.DbHelpers
 {

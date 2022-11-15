@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Model.Domain
+namespace NewsPortal.Model.Domain
 {
     /// <summary>
     /// BaseEntity.

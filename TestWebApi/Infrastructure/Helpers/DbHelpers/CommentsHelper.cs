@@ -1,4 +1,4 @@
-﻿using Model.Domain;
+﻿using NewsPortal.Model.Domain;
 using System.Collections.Generic;
 
 namespace TestWebApi.Infrastructure.Helpers.DbHelpers

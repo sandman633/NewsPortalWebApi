@@ -2,9 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
+using NewsPortal.Model;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Model.Migrations
+namespace NewsPortal.Model.Migrations
 {
     [DbContext(typeof(WebApiContext))]
     [Migration("20220211072820_newtableUserPolicy")]

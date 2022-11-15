@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using NewsPortal.Model;
 using Repositories.Interfaces;
 using TestWebApi.Infrastructure.Helpers.DbHelpers;
 

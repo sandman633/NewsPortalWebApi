@@ -1,11 +1,11 @@
 ﻿using NewsPortal.BusinessLogic.Services.Interfaces;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Model;
+using NewsPortal.Model;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {

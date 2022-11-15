@@ -1,4 +1,4 @@
-﻿using Model.Domain;
+﻿using NewsPortal.Model.Domain;
 using NewsPortal.DAL.Dto;
 using Repositories.Interfaces.CRUD;
 

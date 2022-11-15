@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Model.Domain
+namespace NewsPortal.Model.Domain
 {
     public class Group : BaseEntity
     {

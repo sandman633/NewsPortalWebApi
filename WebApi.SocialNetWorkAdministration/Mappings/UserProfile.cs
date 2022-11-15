@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using NewsPortal.DAL.Dto;
 using NewsPortal.DAL.Request.User;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using NewsPortal.NewsPortal.DAL.Dto;
 
 namespace NewsPortal.WebApi.Mappings

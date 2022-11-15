@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Model.Domain
+namespace NewsPortal.Model.Domain
 {
     public class Comments : BaseEntity
     {

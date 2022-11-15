@@ -1,8 +1,8 @@
-﻿using Model.Domain;
+﻿using NewsPortal.Model.Domain;
+using NewsPortal.Model.Fluent;
 using Microsoft.EntityFrameworkCore;
-using Model.Fluent;
 
-namespace Model
+namespace NewsPortal.Model
 {
     public class WebApiContext : DbContext
     {

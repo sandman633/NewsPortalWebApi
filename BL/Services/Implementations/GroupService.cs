@@ -1,8 +1,8 @@
 ﻿using NewsPortal.BusinessLogic.Services.Interfaces;
-using Model.Domain;
+using NewsPortal.Model.Domain;
 using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
-using Model;
+using NewsPortal.Model;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {

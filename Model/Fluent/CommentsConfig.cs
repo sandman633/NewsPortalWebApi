@@ -1,9 +1,9 @@
-﻿using Model.Domain;
+﻿using NewsPortal.Model.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace Model.Fluent
+namespace NewsPortal.Model.Fluent
 {
     public class CommentsConfig : IEntityTypeConfiguration<Comments>
     {
