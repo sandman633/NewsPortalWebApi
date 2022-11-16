@@ -5,15 +5,14 @@ namespace Repositories.Interfaces.CRUD
     /// <summary>
     /// Interface for base operations(CRUD).
     /// </summary>
-    /// <typeparam name="TDto"></typeparam>
     /// <typeparam name="TModel"></typeparam>
-    public interface ICrudRepository<TDto, TModel> :
-        ICreatable<TDto>,
+    public interface ICrudRepository<TModel> :
+        ICreatable<TModel>,
         IDeletable,
-        IUpdatable<TDto>,
-        IUpdatableRange<TDto>,
-        IGettable<TDto, TModel>,
-        IGettableById<TDto>
+        IUpdatable<TModel>,
+        IUpdatableRange<TModel>,
+        IGettable<TModel>,
+        IGettableById<TModel>
     {
 
     }

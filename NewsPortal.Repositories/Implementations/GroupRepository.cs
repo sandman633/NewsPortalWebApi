@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using NewsPortal.Model.Domain;
+﻿using NewsPortal.Model.Domain;
 using Microsoft.EntityFrameworkCore;
 using NewsPortal.DAL.Dto;
 using Repositories.Interfaces;
@@ -10,7 +9,7 @@ namespace Repositories.Implementations
 {
     public class GroupRepository : BaseRepository<GroupDto, Group>, IGroupRepository
     {
-        public GroupRepository(WebApiContext context, IMapper mapper) : base(context, mapper)
+        public GroupRepository(WebApiContext context) : base(context)
         {
 
         }

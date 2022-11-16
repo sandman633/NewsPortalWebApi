@@ -18,21 +18,19 @@ namespace Repositories
     /// </summary>
     /// <typeparam name="TDto">TDto.</typeparam>
     /// <typeparam name="TModel">TModel.</typeparam>
-    public class BaseRepository<TDto, TModel> : ICrudRepository<TDto, TModel>
+    public class BaseRepository<TDto, TModel> : ICrudRepository<TModel>
         where TDto : BaseDto
         where TModel : BaseEntity
     {
         protected readonly WebApiContext _context;
-        protected readonly IMapper _mapper;
         protected DbSet<TModel> DbSet => _context.Set<TModel>();
 
         /// <summary>
         /// Initializes the instance <see cref="BaseRepository{TDto, TEntity}"/>.
         /// </summary>
-        public BaseRepository(WebApiContext context, IMapper mapper)
+        public BaseRepository(WebApiContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         /// <summary>
@@ -40,9 +38,8 @@ namespace Repositories
         /// </summary>
         /// <param name="dto">DTO.</param>
         /// <returns>ID of the created entity.</returns>
-        public virtual async Task<TDto> CreateAsync(TDto dto)
+        public virtual async Task<TModel> CreateAsync(TModel entity)
         {
-            var entity = _mapper.Map<TModel>(dto);
             await DbSet.AddAsync(entity);
             return await GetByIdAsync(entity.Id);
         }
@@ -61,23 +58,21 @@ namespace Repositories
         /// Asynchronous method for getting entity.
         /// </summary>
         /// <returns>DTO collection.</returns>
-        public virtual async Task<IEnumerable<TDto>> GetAsync()
+        public virtual async Task<IEnumerable<TModel>> GetAsync()
         {
             var entity = await DefaultIncludeProperties(DbSet).AsNoTracking().ToListAsync();
-            var dtos = _mapper.Map<IEnumerable<TDto>>(entity);
-            return dtos;
+            return entity;
         }
         /// <summary>
         /// Returns all entities that match the given filter.
         /// </summary>
         /// <param name="filter">Search criteria.</param>
-        public virtual async Task<IEnumerable<TDto>> GetByCriteriaAsync(Expression<Func<TModel, bool>> filter = null)
+        public virtual async Task<IEnumerable<TModel>> GetByCriteriaAsync(Expression<Func<TModel, bool>> filter = null)
         {
             IQueryable<TModel> entities = DefaultIncludeProperties(DbSet).AsNoTracking();
             if (filter != null)
                 entities = entities.Where(filter);
-            var dtos = _mapper.Map<IEnumerable<TDto>>(await entities.ToListAsync());
-            return dtos;
+            return entities;
         }
 
         /// <summary>
@@ -85,7 +80,7 @@ namespace Repositories
         /// </summary>
         /// <param name="id">Identifier.</param>
         /// <returns>DTO.</returns>
-        public virtual async Task<TDto> GetByIdAsync(int id)
+        public virtual async Task<TModel> GetByIdAsync(int id)
         {
             try
             {
@@ -95,8 +90,7 @@ namespace Repositories
 
                 if (entity == null)
                     throw new DataTransactionException($"Entity { typeof(TModel).Name } with Id : {id} not found", new { Id = id }, 404);
-                var tdto = _mapper.Map<TDto>(entity);
-                return tdto;
+                return entity;
             }
             catch (Exception)
             {
@@ -108,21 +102,17 @@ namespace Repositories
         /// <summary>
         /// Asynchronous method for updating entity.
         /// </summary>
-        /// <param name="dto"></param>
+        /// <param name="entity"></param>
         /// <returns>DTO.</returns>
-        public virtual async Task UpdateAsync(TDto dto)
+        public virtual async Task UpdateAsync(TModel entity)
         {
-            var entity = _mapper.Map<TModel>(dto);
             DbSet.Update(entity);
         }
 
-        public virtual async Task UpdateRangeAsync(IEnumerable<TDto> dtoes)
+        public virtual async Task UpdateRangeAsync(IEnumerable<TModel> entities)
         {
-            var entites = _mapper.Map<IEnumerable<TModel>>(dtoes);
-            DbSet.UpdateRange(entites);
+            DbSet.UpdateRange(entities);
         }
-
-
         public virtual  void SaveChanges()
         {
             _context.SaveChanges();
@@ -133,8 +123,7 @@ namespace Repositories
         /// <param name="dbSet">DbSet.</param>
         /// <returns>DbSet.</returns>
         public virtual IQueryable<TModel> DefaultIncludeProperties(DbSet<TModel> dbSet) => dbSet;
-
-        public async Task<TDto> GetByIdAsyncWithTracking(int id)
+        public async Task<TModel> GetByIdAsyncWithTracking(int id)
         {
             try
             {
@@ -142,8 +131,7 @@ namespace Repositories
                     .FirstOrDefaultAsync(x => x.Id == id);
                 if (entity == null)
                     throw new DataTransactionException($"Entity {typeof(TModel).Name} with Id : {id} not found", new { Id = id }, 404);
-                var tdto = _mapper.Map<TDto>(entity);
-                return tdto;
+                return entity;
             }
             catch (Exception)
             {

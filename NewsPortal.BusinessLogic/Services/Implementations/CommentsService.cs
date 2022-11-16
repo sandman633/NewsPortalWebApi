@@ -8,12 +8,13 @@ using System.Collections.Generic;
 using System;
 using NewsPortal.BusinessLogic.Services.Infrastructure;
 using NewsPortal.Model;
+using AutoMapper;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class CommentsService : BaseService<CommentsDto,Comments, ICommentsRepository>, ICommentsService
     {
-        public CommentsService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
+        public CommentsService(IUnitOfWork<WebApiContext> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
         public override async Task<CommentsDto> UpdateAsync(CommentsDto dto)
@@ -26,18 +27,18 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         }
         public async Task<IEnumerable<CommentsDto>> GetCommentsFromNews(int newsId)
         {
-            return await _crudRepository.GetByCriteriaAsync(c => c.NewsId == newsId);
+            return _mapper.Map<IEnumerable<CommentsDto>>(await _crudRepository.GetByCriteriaAsync(c => c.NewsId == newsId));
         }
         public async Task<IEnumerable<CommentsDto>> GetCommentsFromUser(int userId)
         {
-            return await _crudRepository.GetByCriteriaAsync(c => c.UserId == userId);
+            return  _mapper.Map<IEnumerable<CommentsDto>>(await _crudRepository.GetByCriteriaAsync(c => c.UserId == userId));
         }
         public async Task HideComments(params int[] ids)
         {
             var entites = await _crudRepository.GetByCriteriaAsync(src => ids.Contains(src.Id));
             foreach (var entite in entites)
             {
-                entite.CommentState = 1;
+                entite.CommentState = CommentState.DELETED;
             }
             _crudRepository.UpdateRangeAsync(entites);
 
