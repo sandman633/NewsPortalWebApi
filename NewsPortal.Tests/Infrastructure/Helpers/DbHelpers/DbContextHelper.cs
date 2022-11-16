@@ -68,6 +68,7 @@ namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
                 WebApiContext.AddRange(GroupPolicyHelper.GetMany(groupPolicies));
             }
             WebApiContext.SaveChanges();
+            WebApiContext.ChangeTracker.Clear();
             #endregion
         }
     }

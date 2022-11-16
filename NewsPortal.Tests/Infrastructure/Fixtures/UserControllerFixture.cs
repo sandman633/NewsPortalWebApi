@@ -10,7 +10,7 @@ namespace NewsPortal.Tests.Infrastructure.Fixtures
     {
         public UserController Create()
         {
-            var userService = new UserService(UnitOfWorkHelper.GetMock().Object);
+            var userService = new UserService(UnitOfWorkHelper.GetMock().Object, _mapper);
             return new UserController(userService,_mapper,_logger);
         }
     }

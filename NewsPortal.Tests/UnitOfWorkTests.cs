@@ -37,7 +37,7 @@ namespace NewsPortal.Tests
             const int expectedCount = 2;
 
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<UserDto, User, IUserRepository>();
+            var repo = sut.GetRepository<User, IUserRepository>();
             var users = await repo.GetAsync();
 
             //Act 
@@ -55,7 +55,7 @@ namespace NewsPortal.Tests
             const int expectedCount = 4;
 
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<GroupDto, Group, IGroupRepository>();
+            var repo = sut.GetRepository<Group, IGroupRepository>();
             var groups = await repo.GetAsync();
 
             //Act 
@@ -72,7 +72,7 @@ namespace NewsPortal.Tests
             //Arrange
             const int expectedCount = 1;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<NewsDto, News, INewsRepository>();
+            var repo = sut.GetRepository<News, INewsRepository>();
             var news = await repo.GetAsync();
             //Act 
             var actualCount = news.Count();
@@ -87,7 +87,7 @@ namespace NewsPortal.Tests
             //Arrange
             const int expectedCount = 1;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<CommentsDto, Comments, ICommentsRepository>();
+            var repo = sut.GetRepository<Comments, ICommentsRepository>();
             var comments = await repo.GetAsync();
             //Act 
             var actualCount = comments.Count();
@@ -102,7 +102,7 @@ namespace NewsPortal.Tests
             //Arrange
             const int expectedCount = 4;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<GroupPolicyDto, GroupPolicy, IGroupPolicyRepository>();
+            var repo = sut.GetRepository<GroupPolicy, IGroupPolicyRepository>();
             var groupPolicies = await repo.GetAsync();
             //Act 
             var actualCount = groupPolicies.Count();
