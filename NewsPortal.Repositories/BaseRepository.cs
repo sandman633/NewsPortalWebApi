@@ -41,7 +41,7 @@ namespace Repositories
         public virtual async Task<TModel> CreateAsync(TModel entity)
         {
             await DbSet.AddAsync(entity);
-            return await GetByIdAsync(entity.Id);
+            return entity;
         }
 
         /// <summary>

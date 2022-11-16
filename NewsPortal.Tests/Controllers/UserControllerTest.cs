@@ -98,15 +98,30 @@ namespace NewsPortal.Tests.Controllers
             var userId = 1;
             var newUserName = "NewUSerName1";
             var email = "Email@gmail.com";
-            //Act 
             var userRequest = new UpdateUserRequest() { Id = userId,Name = newUserName};
+            //Act 
             var response = ResponseHelper.GetResult(await controller.UpdateAsync(userRequest));
             //Assert
             Assert.Equal(userId, response.Data.Id);
             Assert.Equal(newUserName, response.Data.Name);
             Assert.Equal(email, response.Data.Email);
         }
-
+        [Fact]
+        public async void ItShould_create_newuser()
+        {
+            //Arrange
+            UserController controller = _fixture.Create();
+            var email = "newuser@gamil.com";
+            var name = "newUser";
+            var id = 3;
+            var newUser = new NewUserRequest() { Age = 20, Email = email, Name = name, LastName = name, Password = "Passw0rd!" };
+            //Act 
+            var response = ResponseHelper.GetResult(await controller.CreateAsync(newUser));
+            //Assert
+            Assert.Equal(id, response.Data.Id);
+            Assert.Equal(name, response.Data.Name);
+            Assert.Equal(email, response.Data.Email);
+        }
     }
     public class ResponseHelper
     {
