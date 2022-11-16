@@ -1,16 +1,15 @@
 using NewsPortal.DAL.Dto;
 using NewsPortal.Model.Domain;
+using NewsPortal.Tests.Infrastructure.Fixtures;
 using Repositories.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
-using TestWebApi.Infrastructure.Fixtures;
 using Xunit;
 
-namespace TestWebApi
+namespace NewsPortal.Tests
 {
     public class UnitOfWorkTests : IClassFixture<UnitOfWorkFixture>
     {
-        
         private readonly UnitOfWorkFixture _unitOfWorkFixture;
 
         public UnitOfWorkTests(UnitOfWorkFixture unitOfWorkFixture)
@@ -18,7 +17,7 @@ namespace TestWebApi
             _unitOfWorkFixture = unitOfWorkFixture;
         }
 
-        [Trait("UnitOfWorkTests","UnderTesting")]
+        [Trait("UnitOfWorkTests", "UnderTesting")]
         [Fact]
         public void ItShould_unitOfWork_instance_not_null_and_created()
         {
@@ -30,7 +29,7 @@ namespace TestWebApi
             //Assert
             Assert.NotNull(sut);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.User", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_usersAsync()
         {
@@ -38,7 +37,7 @@ namespace TestWebApi
             const int expectedCount = 2;
 
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<UserDto, User, IUserRepository>();
+            var repo = sut.GetRepository<User, IUserRepository>();
             var users = await repo.GetAsync();
 
             //Act 
@@ -48,7 +47,7 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.Group", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_groupsAsync()
         {
@@ -56,7 +55,7 @@ namespace TestWebApi
             const int expectedCount = 4;
 
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<GroupDto, Group, IGroupRepository>();
+            var repo = sut.GetRepository<Group, IGroupRepository>();
             var groups = await repo.GetAsync();
 
             //Act 
@@ -66,14 +65,14 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.News", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_newsAsync()
         {
             //Arrange
             const int expectedCount = 1;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<NewsDto, News, INewsRepository>();
+            var repo = sut.GetRepository<News, INewsRepository>();
             var news = await repo.GetAsync();
             //Act 
             var actualCount = news.Count();
@@ -81,14 +80,14 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.Comments", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_commentsAsync()
         {
             //Arrange
             const int expectedCount = 1;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<CommentsDto, Comments, ICommentsRepository>();
+            var repo = sut.GetRepository<Comments, ICommentsRepository>();
             var comments = await repo.GetAsync();
             //Act 
             var actualCount = comments.Count();
@@ -96,14 +95,14 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.GroupPolicies", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_groupPoliciesAsync()
         {
             //Arrange
             const int expectedCount = 4;
             var sut = _unitOfWorkFixture.Create();
-            var repo = sut.GetRepository<GroupPolicyDto, GroupPolicy, IGroupPolicyRepository>();
+            var repo = sut.GetRepository<GroupPolicy, IGroupPolicyRepository>();
             var groupPolicies = await repo.GetAsync();
             //Act 
             var actualCount = groupPolicies.Count();

@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NewsPortal.Model;
+using AutoMapper;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class UserGroupService : BaseService<UserGroupDto, UserGroup, IUserGroupRepository>, IUserGroupService
     {
-        public UserGroupService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
+        public UserGroupService(IUnitOfWork<WebApiContext> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
 
         }

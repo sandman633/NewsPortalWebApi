@@ -5,24 +5,25 @@ using System.Collections.Generic;
 using Repositories.Interfaces.CRUD;
 using System.Threading.Tasks;
 using Repositories.Interfaces;
-using System;
 using NewsPortal.Model;
+using AutoMapper;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class BaseService<TDto, TEntity,TRepositoryType> : ICrudService<TDto>
             where TDto : BaseDto
             where TEntity : BaseEntity
-            where TRepositoryType : class,ICrudRepository<TDto, TEntity>
+            where TRepositoryType : class,ICrudRepository<TEntity>
     {
-        protected readonly ICrudRepository<TDto, TEntity> _crudRepository;
+        protected readonly ICrudRepository<TEntity> _crudRepository;
         protected readonly IUnitOfWork<WebApiContext> _unitOfWork;
+        protected readonly IMapper _mapper;
 
-
-        public BaseService(IUnitOfWork<WebApiContext> unitOfWork)
+        public BaseService(IUnitOfWork<WebApiContext> unitOfWork, IMapper mapper)
         {
-            _crudRepository =  unitOfWork.GetRepository<TDto, TEntity, TRepositoryType>();
+            _crudRepository =  unitOfWork.GetRepository<TEntity, TRepositoryType>();
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -31,9 +32,10 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         /// <param name="dto"></param>
         public virtual async Task<TDto> CreateAsync(TDto dto)
         {
-            var entity = await _crudRepository.CreateAsync(dto);
+            var entity = _mapper.Map<TEntity>(dto);
+            var result = await _crudRepository.CreateAsync(entity);
             await _unitOfWork.SaveChangesAsync();
-            return entity;
+            return _mapper.Map<TDto>(result);
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         public virtual async Task DeleteAsync(params int[] ids)
         {
             await _crudRepository.DeleteAsync(ids);
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         /// </summary>
         public virtual async Task<IEnumerable<TDto>> GetAsync()
         {
-            return await _crudRepository.GetAsync();
+            return _mapper.Map<IEnumerable<TDto>>(await _crudRepository.GetAsync());
         }
 
         /// <summary>
@@ -60,7 +62,14 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         /// <param name="id"></param>
         public virtual async Task<TDto> GetByIdAsync(int id)
         {
-            return await _crudRepository.GetByIdAsync(id);
+            var entity = _mapper.Map<TDto>(await _crudRepository.GetByIdAsync(id));
+            return entity;
+        }
+
+        public virtual async Task<TDto> GetByIdAsyncWithTracking(int id)
+        {
+            var entity = _mapper.Map<TDto>(await _crudRepository.GetByIdAsyncWithTracking(id));
+            return entity;
         }
 
         /// <summary>
@@ -69,9 +78,10 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         /// <param name="dto"></param>
         public virtual async Task<TDto> UpdateAsync(TDto dto)
         {
-            var updatedEntity = await _crudRepository.UpdateAsync(dto);
+            await _crudRepository.UpdateAsync(_mapper.Map<TEntity>(dto));
             await _unitOfWork.SaveChangesAsync();
-            return updatedEntity;
+            var updatedEntity = await _crudRepository.GetByIdAsync(dto.Id);
+            return _mapper.Map<TDto>(updatedEntity);
         }
     }
 }

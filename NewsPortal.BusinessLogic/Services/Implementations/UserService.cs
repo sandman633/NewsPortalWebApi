@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using System;
 using NewsPortal.BusinessLogic.Services.Infrastructure;
 using NewsPortal.Model;
+using AutoMapper;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class UserService : BaseService<UserDto, User, IUserRepository>, IUserService
     {
-        public UserService(IUnitOfWork<WebApiContext> unitOfWork) :base(unitOfWork)
+        public UserService(IUnitOfWork<WebApiContext> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
 
         }
@@ -28,7 +29,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         public async Task<UserDto> GetByEmailAsync(string email)
         {
             var user = await _crudRepository.GetByCriteriaAsync( x=>x.Email==email);
-            return user.SingleOrDefault();
+            return _mapper.Map<UserDto>(user.SingleOrDefault());
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.Interfaces
 {
-    public interface ICommentsRepository : ICrudRepository<CommentsDto, Comments>
+    public interface ICommentsRepository : ICrudRepository<Comments>
     {
         
     }

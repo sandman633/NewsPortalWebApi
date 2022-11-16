@@ -1,18 +1,16 @@
 ﻿using NewsPortal.Model;
 using Repositories.Interfaces;
-using TestWebApi.Infrastructure.Helpers.DbHelpers;
+using NewsPortal.Tests.Infrastructure.Helpers.DbHelpers;
 
-namespace TestWebApi.Infrastructure.Fixtures
+namespace NewsPortal.Tests.Infrastructure.Fixtures
 {
     public class UnitOfWorkFixture
     {
-
-        public IUnitOfWork<WebApiContext> Create(bool consistency=true)
+        public IUnitOfWork<WebApiContext> Create()
         {
-            var mock = UnitOfWorkHelper.GetMock(consistency);
+            var mock = UnitOfWorkHelper.GetMock();
 
             return mock.Object;
         }
-
     }
 }

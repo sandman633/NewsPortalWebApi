@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
-using TestWebApi.Infrastructure.Helpers;
+using NewsPortal.Tests.Infrastructure.Helpers;
 
-namespace TestWebApi.Controllers
+namespace NewsPortal.Tests.Controllers
 {
     public class BaseControllerTests<T>
     {

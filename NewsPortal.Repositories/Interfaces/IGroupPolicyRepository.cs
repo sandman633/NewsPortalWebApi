@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Repositories.Interfaces
 {
-    public interface IGroupPolicyRepository : ICrudRepository<GroupPolicyDto, GroupPolicy>
+    public interface IGroupPolicyRepository : ICrudRepository<GroupPolicy>
     {
     }
 }

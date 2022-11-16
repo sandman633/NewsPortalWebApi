@@ -15,11 +15,11 @@ namespace NewsPortal.DAL.Request.User
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
         /// <summary>
         /// LastName.
         /// </summary>
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         /// <summary>
         /// Age.
         /// </summary>
@@ -27,6 +27,6 @@ namespace NewsPortal.DAL.Request.User
         /// <summary>
         /// Email.
         /// </summary>
-        public string Email { get; set; }
+        public string? Email { get; set; }
     }
 }

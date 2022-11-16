@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TestWebApi.Infrastructure.Helpers
+namespace NewsPortal.Tests.Infrastructure.Helpers
 {
     public class LoggerHelper
     {

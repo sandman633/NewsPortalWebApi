@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 using System;
 using NewsPortal.BusinessLogic.Services.Infrastructure;
 using NewsPortal.Model;
+using AutoMapper;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
     public class GroupPolicyService : BaseService<GroupPolicyDto, GroupPolicy, IGroupPolicyRepository>, IGroupPolicyService
     {
-        public GroupPolicyService(IUnitOfWork<WebApiContext> unitOfWork) : base(unitOfWork)
+        public GroupPolicyService(IUnitOfWork<WebApiContext> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
 
         }
         public override async Task<GroupPolicyDto> UpdateAsync(GroupPolicyDto dto)
         {
-            var groupPolicy = await _crudRepository.GetByIdAsync(dto.Id);
+            var groupPolicy = _mapper.Map<GroupPolicyDto>(await _crudRepository.GetByIdAsync(dto.Id));
             if (groupPolicy == null)
                 throw new NullReferenceException();
             groupPolicy = MapForUpdateHelper.GroupPolicyUpdateMap(dto, groupPolicy);

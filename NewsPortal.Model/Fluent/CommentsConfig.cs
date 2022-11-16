@@ -13,12 +13,13 @@ namespace NewsPortal.Model.Fluent
 
             builder.HasIndex(x => x.Id);
 
-            builder.HasIndex(x => x.UserId);
-
             builder.HasIndex(x => x.NewsId);
 
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();
+
+            builder.Property(x => x.UserId)
+                .IsRequired(false);
 
             builder.Property(x => x.Text)
                 .IsRequired();

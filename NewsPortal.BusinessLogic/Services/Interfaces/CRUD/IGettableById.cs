@@ -15,5 +15,12 @@ namespace NewsPortal.BusinessLogic.Services.Interfaces.CRUD
         /// <param name="id"></param>
         /// <returns></returns>
         Task<TDto> GetByIdAsync(int id);
+
+        /// <summary>
+        /// Interface method for getting entities by id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<TDto> GetByIdAsyncWithTracking(int id);
     }
 }

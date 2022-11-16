@@ -38,10 +38,9 @@ namespace Repositories.Interfaces
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repository</param>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
-        ICrudRepository<TDto, TEntity> GetRepository<TDto, TEntity, TRepoInterface>()
+        ICrudRepository<TEntity> GetRepository<TEntity, TRepoInterface>()
             where TEntity : class
-            where TDto : class
-            where TRepoInterface : class, ICrudRepository<TDto, TEntity>;
+            where TRepoInterface : class, ICrudRepository<TEntity>;
 
         /// <summary>
         /// Saves all changes made in this context to the database.

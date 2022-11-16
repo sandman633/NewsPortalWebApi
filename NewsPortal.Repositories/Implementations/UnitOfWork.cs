@@ -109,10 +109,9 @@ namespace Repositories.Implementations
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repository</param>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
-        public ICrudRepository<TDto,TEntity> GetRepository<TDto, TEntity,TRepoInterface>() 
+        public ICrudRepository<TEntity> GetRepository<TEntity,TRepoInterface>() 
             where TEntity : class
-            where TDto: class
-            where TRepoInterface : class, ICrudRepository<TDto, TEntity> 
+            where TRepoInterface : class, ICrudRepository<TEntity> 
         {
             _repositories ??= new Dictionary<Type, object>();
             var t = typeof(TRepoInterface);

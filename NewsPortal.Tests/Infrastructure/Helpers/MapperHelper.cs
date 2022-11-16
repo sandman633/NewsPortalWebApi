@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using NewsPortal.WebApi;
 
-namespace TestWebApi.Infrastructure.Helpers
+namespace NewsPortal.Tests.Infrastructure.Helpers
 {
     public class MapperHelper
     {

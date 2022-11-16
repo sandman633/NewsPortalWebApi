@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Repositories.Interfaces
 {
-    public interface INewsRepository : ICrudRepository<NewsDto,News>
+    public interface INewsRepository : ICrudRepository<News>
     {
     }
 }

@@ -4,7 +4,7 @@ using Repositories.Interfaces.CRUD;
 
 namespace Repositories.Interfaces
 {
-    public interface IUserGroupRepository : ICrudRepository<UserGroupDto, UserGroup>
+    public interface IUserGroupRepository : ICrudRepository<UserGroup>
     {
     }
 }

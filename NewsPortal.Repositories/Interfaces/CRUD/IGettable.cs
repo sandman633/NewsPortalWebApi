@@ -10,17 +10,17 @@ namespace Repositories.Interfaces.CRUD
     /// </summary>
     /// <typeparam name="TDto">DTO.</typeparam>
     /// /// <typeparam name="TEntity">Entity type.</typeparam>
-    public interface IGettable<TDto, TEntity>
+    public interface IGettable<TEntity>
     {
         /// <summary>
         /// Returns all entities.
         /// </summary>
-        Task<IEnumerable<TDto>> GetAsync();
+        Task<IEnumerable<TEntity>> GetAsync();
         /// <summary>
         /// Returns all entities that match the given filter.
         /// </summary>
         /// <param name="filter">Search criteria.</param>
-        Task<IEnumerable<TDto>> GetByCriteriaAsync(Expression<Func<TEntity, bool>> filter = null);
+        Task<IEnumerable<TEntity>> GetByCriteriaAsync(Expression<Func<TEntity, bool>> filter = null);
 
     }
 }
