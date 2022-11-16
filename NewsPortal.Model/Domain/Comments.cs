@@ -14,7 +14,7 @@ namespace NewsPortal.Model.Domain
         /// <summary>
         /// Author of comment
         /// </summary>
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         /// <summary>
         /// nesting level
         /// </summary>

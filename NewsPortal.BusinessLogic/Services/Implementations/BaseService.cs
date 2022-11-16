@@ -43,7 +43,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         public virtual async Task DeleteAsync(params int[] ids)
         {
             await _crudRepository.DeleteAsync(ids);
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
         }
 
         /// <summary>
@@ -63,14 +63,20 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
             return await _crudRepository.GetByIdAsync(id);
         }
 
+        public virtual async Task<TDto> GetByIdAsyncWithTracking(int id)
+        {
+            return await _crudRepository.GetByIdAsyncWithTracking(id);
+        }
+
         /// <summary>
         ///     Asynchronous method for updating entity.
         /// </summary>
         /// <param name="dto"></param>
         public virtual async Task<TDto> UpdateAsync(TDto dto)
         {
-            var updatedEntity = await _crudRepository.UpdateAsync(dto);
+            await _crudRepository.UpdateAsync(dto);
             await _unitOfWork.SaveChangesAsync();
+            var updatedEntity = await _crudRepository.GetByIdAsync(dto.Id);
             return updatedEntity;
         }
     }

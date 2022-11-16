@@ -14,7 +14,7 @@ namespace NewsPortal.Model.Domain
         /// <summary>
         /// Author Id
         /// </summary>
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         /// <summary>
         /// Header of news
         /// </summary>

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using NewsPortal.DAL.Dto;
 using NewsPortal.Model;
 using NewsPortal.Model.Domain;
+using NewsPortal.Repositories.Infrastructure.Exceptions;
 using Repositories.Interfaces.CRUD;
 using System;
 using System.Collections.Generic;
@@ -86,11 +87,22 @@ namespace Repositories
         /// <returns>DTO.</returns>
         public virtual async Task<TDto> GetByIdAsync(int id)
         {
-            var entities = await DefaultIncludeProperties(DbSet)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == id);
-            var tdos = _mapper.Map<TDto>(entities);
-            return tdos;
+            try
+            {
+                var entity = await DefaultIncludeProperties(DbSet)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+                if (entity == null)
+                    throw new DataTransactionException($"Entity { typeof(TModel).Name } with Id : {id} not found", new { Id = id }, 404);
+                var tdto = _mapper.Map<TDto>(entity);
+                return tdto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -98,15 +110,10 @@ namespace Repositories
         /// </summary>
         /// <param name="dto"></param>
         /// <returns>DTO.</returns>
-        public virtual async Task<TDto> UpdateAsync(TDto dto)
+        public virtual async Task UpdateAsync(TDto dto)
         {
-
             var entity = _mapper.Map<TModel>(dto);
-            //if (!DbSet.Contains(entity))
-            //throw new ex
             DbSet.Update(entity);
-            var newEntity = await GetByIdAsync(entity.Id);
-            return _mapper.Map<TDto>(newEntity);
         }
 
         public virtual async Task UpdateRangeAsync(IEnumerable<TDto> dtoes)
@@ -127,6 +134,21 @@ namespace Repositories
         /// <returns>DbSet.</returns>
         public virtual IQueryable<TModel> DefaultIncludeProperties(DbSet<TModel> dbSet) => dbSet;
 
-
+        public async Task<TDto> GetByIdAsyncWithTracking(int id)
+        {
+            try
+            {
+                var entity = await DefaultIncludeProperties(DbSet)
+                    .FirstOrDefaultAsync(x => x.Id == id);
+                if (entity == null)
+                    throw new DataTransactionException($"Entity {typeof(TModel).Name} with Id : {id} not found", new { Id = id }, 404);
+                var tdto = _mapper.Map<TDto>(entity);
+                return tdto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

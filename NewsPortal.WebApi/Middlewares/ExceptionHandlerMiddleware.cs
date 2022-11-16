@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using NewsPortal.Repositories.Infrastructure.Exceptions;
 
 namespace NewsPortal.WebApi.Middlewares
 {
@@ -29,6 +30,10 @@ namespace NewsPortal.WebApi.Middlewares
             {
                 await HandleException(ex, ex.StatusCode, httpContext);
             }
+            catch (DataTransactionException e)
+            {
+                await HandleException(e, e.StatusCode, httpContext);
+            }
             catch (Exception e)
             {
                 await HandleException(e, 500, httpContext);
@@ -43,13 +48,19 @@ namespace NewsPortal.WebApi.Middlewares
             GenerateResultOnException(e, statusCode, out result);
 
             httpContext.Response.StatusCode = statusCode;
-            httpContext.Response.WriteAsJsonAsync(JsonSerializer.Serialize(result));
+            httpContext.Response.WriteAsJsonAsync(result);
         }
         private void GenerateResultOnException(Exception exception, int statusCode, out Result result)
         {
             if (exception is AuthentificationException authentificationException)
             {
                 var listErrors = new List<Error>() { new Error() { ErrorMessage = authentificationException.Message, ErrorCode = authentificationException.StatusCode, Description = authentificationException.Description } };
+                result = new Result(statusCode, listErrors);
+                return;
+            }
+            if (exception is DataTransactionException dataException)
+            {
+                var listErrors = new List<Error>() { new Error() { ErrorMessage = dataException.Message, ErrorCode = dataException.StatusCode, Description = dataException.Data } };
                 result = new Result(statusCode, listErrors);
                 return;
             }

@@ -14,5 +14,10 @@ namespace Repositories.Interfaces.CRUD
         /// </summary>
         /// <param name="id">Identifier.</param>
         Task<TDto> GetByIdAsync(int id);
+        /// <summary>
+        /// Interface method for getting entities by id with tracking. 
+        /// </summary>
+        /// <param name="id">Identifier.</param>
+        Task<TDto> GetByIdAsyncWithTracking(int id);
     }
 }

@@ -12,6 +12,6 @@ namespace Repositories.Interfaces.CRUD
         /// Interface method for updating entity.
         /// </summary>
         /// <param name="dto">DTO.</param>
-        Task<TDto> UpdateAsync(TDto dto);
+        Task UpdateAsync(TDto dto);
     }
 }

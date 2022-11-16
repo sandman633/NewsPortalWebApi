@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NewsPortal.DAL.Response;
 
 namespace NewsPortal.WebApi.Controllers
 {
@@ -26,50 +27,48 @@ namespace NewsPortal.WebApi.Controllers
             _logger = logger;
         }
 
-
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserResponse>))]
-        public async Task<IActionResult> GetAsync()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result<IEnumerable<UserResponse>>))]
+        public async Task<ActionResult<Result<IEnumerable<UserResponse>>>> GetAsync()
         {
             _logger.LogInformation("Users/Get was requested.");
             var response = await _userService.GetAsync();
-            return Ok(_mapper.Map<IEnumerable<UserResponse>>(response));
+            return Ok(new Result<IEnumerable<UserResponse>>(_mapper.Map<IEnumerable<UserResponse>>(response)));
         }
 
-
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
-        public async Task<IActionResult> GetByIdAsync(int id, CancellationToken cancellationToken)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result<UserResponse>))]
+        public async Task<ActionResult<Result<UserResponse>>> GetByIdAsync(int id)
         {
             _logger.LogInformation("Users/GetById was requested.");
             var response = await _userService.GetByIdAsync(id);
-            return Ok(_mapper.Map<UserResponse>(response));
+            return Ok(new Result<UserResponse>(_mapper.Map<UserResponse>(response)));
         }
         [HttpDelete("Delete/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
-        public async Task<IActionResult> DeleteAsync(int id, CancellationToken cancellationToken)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result))]
+        public async Task<ActionResult<Result>> DeleteAsync(int id)
         {
             _logger.LogInformation("Users/Delete was requested.");
             await _userService.DeleteAsync(id);
-            return NoContent();
+            return Ok(new Result(200));
         }
         [HttpPost("Update")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
-        public async Task<IActionResult> UpdateAsync(UpdateUserRequest user, CancellationToken cancellationToken)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result<UserResponse>))]
+        public async Task<ActionResult<Result<UserResponse>>> UpdateAsync(UpdateUserRequest user)
         {
             _logger.LogInformation("Users/Update was requested.");
             var userDto = _mapper.Map<UserDto>(user);
             var response = await _userService.UpdateAsync(userDto);
-            return Ok(_mapper.Map<UserResponse>(response));
+            return Ok(new Result<UserResponse>(_mapper.Map<UserResponse>(response)));
         }
         [HttpPost("Create")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
-        public async Task<IActionResult> CreateAsync(NewUserRequest  user, CancellationToken cancellationToken)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Result<UserResponse>))]
+        public async Task<ActionResult<Result<UserResponse>>> CreateAsync(NewUserRequest  user)
         {
             _logger.LogInformation("Users/Create was requested.");
             var userDto = _mapper.Map<UserDto>(user);
             var response = await _userService.CreateAsync(userDto);
-            return Ok(_mapper.Map<UserResponse>(response));
+            return Ok(new Result<UserResponse>(_mapper.Map<UserResponse>(response)));
         }
     }
 }

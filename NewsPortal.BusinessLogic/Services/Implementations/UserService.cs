@@ -19,7 +19,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         public override async Task<UserDto> UpdateAsync(UserDto dto)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
-            var originalEntity = await GetByIdAsync(dto.Id);
+            var originalEntity = await GetByIdAsyncWithTracking(dto.Id);
             if (originalEntity == null) throw new NullReferenceException(nameof(originalEntity));
             originalEntity = MapForUpdateHelper.UserUpdateMap(dto, originalEntity);
             return await base.UpdateAsync(originalEntity);
