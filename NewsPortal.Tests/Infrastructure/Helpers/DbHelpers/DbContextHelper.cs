@@ -4,23 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
 using NewsPortal.Model;
+using NewsPortal.Tests.Infrastructure.Helpers.DbHelpers;
+using System;
 
-namespace TestWebApi.Infrastructure.Helpers.DbHelpers
+namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
 {
     public class DbContextHelper
     {
         public WebApiContext WebApiContext { get; set; }
-        public DbContextHelper(bool consistency)
+        public DbContextHelper()
         {
             var builder = new DbContextOptionsBuilder<WebApiContext>();
-            builder.UseInMemoryDatabase("UNIT_TEST_DB").ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+            var myDatabaseName = "mydatabase_" + DateTime.Now.ToFileTimeUtc();
+            builder.UseInMemoryDatabase(myDatabaseName)
+                .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
             var options = builder.Options;
             WebApiContext = new WebApiContext(options);
-            if (consistency)
-            {
-                WebApiContext.Database.EnsureDeleted();
-                WebApiContext.Database.EnsureCreated();
-            }
             #region seed Db
             if (!WebApiContext.Users.Any())
             {

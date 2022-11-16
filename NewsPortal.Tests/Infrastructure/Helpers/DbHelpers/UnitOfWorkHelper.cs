@@ -5,13 +5,13 @@ using Repositories.Implementations;
 using Repositories.Interfaces;
 using NewsPortal.Model;
 
-namespace TestWebApi.Infrastructure.Helpers.DbHelpers
+namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
 {
     public static class UnitOfWorkHelper
     {
-        public static Mock<IUnitOfWork<WebApiContext>> GetMock(bool consistency)
+        public static Mock<IUnitOfWork<WebApiContext>> GetMock()
         {
-            var context = new DbContextHelper(consistency).WebApiContext;
+            var context = new DbContextHelper().WebApiContext;
             var mapper = MapperHelper.CreateMapper();
             var unitOfWork = new Mock<IUnitOfWork<WebApiContext>>();
             unitOfWork.Setup(x => x.GetRepository<UserDto, User, IUserRepository>()).Returns(new UserRepository(context, mapper));

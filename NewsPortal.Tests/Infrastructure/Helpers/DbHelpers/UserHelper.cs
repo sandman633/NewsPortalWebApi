@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TestWebApi.Infrastructure.Helpers.DbHelpers
+namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
 {
     public static class UserHelper
     {

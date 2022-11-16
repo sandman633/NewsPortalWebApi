@@ -1,7 +1,7 @@
 ﻿using NewsPortal.Model.Domain;
 using System.Collections.Generic;
 
-namespace TestWebApi.Infrastructure.Helpers.DbHelpers
+namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
 {
     public static class UserGroupHelper
     {
@@ -10,7 +10,7 @@ namespace TestWebApi.Infrastructure.Helpers.DbHelpers
             return new UserGroup
             {
                 Id = id,
-                GroupId=1,
+                GroupId= groupId,
                 UserId=userId,
             };
         }

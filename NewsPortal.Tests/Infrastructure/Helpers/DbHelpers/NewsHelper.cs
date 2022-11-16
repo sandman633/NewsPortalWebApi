@@ -1,7 +1,7 @@
 ﻿using NewsPortal.Model.Domain;
 using System.Collections.Generic;
 
-namespace TestWebApi.Infrastructure.Helpers.DbHelpers
+namespace NewsPortal.Tests.Infrastructure.Helpers.DbHelpers
 {
     public static class NewsHelper
     {

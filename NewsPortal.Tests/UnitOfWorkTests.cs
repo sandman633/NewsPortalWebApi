@@ -1,16 +1,15 @@
 using NewsPortal.DAL.Dto;
 using NewsPortal.Model.Domain;
+using NewsPortal.Tests.Infrastructure.Fixtures;
 using Repositories.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
-using TestWebApi.Infrastructure.Fixtures;
 using Xunit;
 
-namespace TestWebApi
+namespace NewsPortal.Tests
 {
     public class UnitOfWorkTests : IClassFixture<UnitOfWorkFixture>
     {
-        
         private readonly UnitOfWorkFixture _unitOfWorkFixture;
 
         public UnitOfWorkTests(UnitOfWorkFixture unitOfWorkFixture)
@@ -18,7 +17,7 @@ namespace TestWebApi
             _unitOfWorkFixture = unitOfWorkFixture;
         }
 
-        [Trait("UnitOfWorkTests","UnderTesting")]
+        [Trait("UnitOfWorkTests", "UnderTesting")]
         [Fact]
         public void ItShould_unitOfWork_instance_not_null_and_created()
         {
@@ -30,7 +29,7 @@ namespace TestWebApi
             //Assert
             Assert.NotNull(sut);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.User", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_usersAsync()
         {
@@ -48,7 +47,7 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.Group", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_groupsAsync()
         {
@@ -66,7 +65,7 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.News", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_newsAsync()
         {
@@ -81,7 +80,7 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.Comments", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_commentsAsync()
         {
@@ -96,7 +95,7 @@ namespace TestWebApi
             //Assert
             Assert.Equal(expectedCount, actualCount);
         }
-        [Trait("UnitOfWorkTests", "UnderTesting")]
+        [Trait("UnitOfWorkTests.GroupPolicies", "UnderTesting")]
         [Fact]
         public async Task ItShould_contains_groupPoliciesAsync()
         {
