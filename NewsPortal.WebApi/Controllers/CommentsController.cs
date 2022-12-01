@@ -96,7 +96,7 @@ namespace NewsPortal.WebApi.Controllers
         }
         [HttpPost("Reply")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CommentsResponse))]
-        public async Task<IActionResult> ReplyAsync(NewCommentRequest comment, CancellationToken cancellationToken)
+        public async Task<IActionResult> ReplyAsync(ReplyCommentRequest comment, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Comments/Create was requested.");
             var commentDto = _mapper.Map<CommentsDto>(comment);

@@ -11,11 +11,12 @@ namespace NewsPortal.WebApi.Infrastructure.Extensions
     {
         public static void DbConfigure(this IServiceCollection services,IConfiguration configuration)
         {
-            //services.AddDbContext<WebApiContext>(options => 
-            //options.UseNpgsql(configuration.GetConnectionString(nameof(WebApiContext)), 
-            //builder => builder.MigrationsAssembly(typeof(WebApiContext).Assembly.FullName)));
             services.AddDbContext<WebApiContext>(options =>
-            options.UseInMemoryDatabase("TestDataBase"));
+            {
+                options.UseNpgsql(configuration.GetConnectionString(nameof(WebApiContext)));
+            });
+            //services.AddDbContext<WebApiContext>(options =>
+            //options.UseInMemoryDatabase("TestDataBase"));
             services.AddTransient<IUnitOfWork<WebApiContext>, UnitOfWork<WebApiContext>>();
 
         }

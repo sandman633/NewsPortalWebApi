@@ -35,19 +35,26 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         }
         public async Task HideComments(params int[] ids)
         {
-            var entites = await _crudRepository.GetByCriteriaAsync(src => ids.Contains(src.Id));
-            foreach (var entite in entites)
+            try
             {
-                entite.CommentState = CommentState.DELETED;
+                var entites = (await _crudRepository.GetByCriteriaAsync(src => ids.Contains(src.Id))).ToList();
+                foreach (var entite in entites)
+                {
+                    entite.CommentState = CommentState.DELETED;
+                }
+                await _crudRepository.UpdateRangeAsync(entites);
+                _unitOfWork.SaveChanges();
             }
-            _crudRepository.UpdateRangeAsync(entites);
-
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
         public async Task<CommentsDto> ReplyComment(CommentsDto comment)
         {
             if (comment.LinkedCommentId != null)
             {
-                var linkedComment = await GetByIdAsync((int)comment.LinkedCommentId);
+                var linkedComment = await GetByIdAsync(comment.LinkedCommentId.Value);
                 if (linkedComment.Root == 5)
                 {
                     //TODO: добавить эксепшп для коммента 

@@ -21,6 +21,9 @@ namespace NewsPortal.WebApi.Mappings
                 .ReverseMap();
             CreateMap<NewCommentRequest, CommentsDto>()
                 .ForMember(x => x.UserId, y => y.MapFrom(src => src.AuthorId));
+            CreateMap<ReplyCommentRequest, CommentsDto>()
+                .ForMember(x => x.UserId, y => y.MapFrom(src => src.AuthorId))
+                .ForMember(x => x.LinkedCommentId, y => y.MapFrom(src => src.LinkedCommentId));
             CreateMap<UpdateCommentRequest, CommentsDto>()
                 .ForMember(x => x.Id, y => y.MapFrom(src => src.Id));
             CreateMap<CommentsDto, CommentsResponse>()

@@ -20,9 +20,5 @@ namespace NewsPortal.Model.Domain
         /// User.
         /// </summary>
         public Group Group { get; set; }
-        /// <summary>
-        /// Group  policies.
-        /// </summary>
-        public ICollection<GroupPolicy> GroupPolicies { get; set; }
     }
 }

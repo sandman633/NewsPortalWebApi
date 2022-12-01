@@ -31,10 +31,12 @@ namespace NewsPortal.Model.Fluent
                 .IsRequired();
 
             builder.Property(x => x.CreatedTime)
-                .HasDefaultValue(DateTime.Now);
+                .HasColumnType("timestamptz")
+                .IsRequired(false);
 
             builder.Property(x => x.UpdatedTime)
-                .HasDefaultValue(DateTime.Now);
+                .HasColumnType("timestamptz")
+                .IsRequired(false);
 
         }
     }

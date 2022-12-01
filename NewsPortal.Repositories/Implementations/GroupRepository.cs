@@ -14,6 +14,6 @@ namespace Repositories.Implementations
 
         }
 
-        public override IQueryable<Group> DefaultIncludeProperties(DbSet<Group> dbSet) => dbSet.Include(scr => scr.UserGroups).ThenInclude(scr=>scr.GroupPolicies);
+        public override IQueryable<Group> DefaultIncludeProperties(DbSet<Group> dbSet) => dbSet.Include(scr => scr.UserGroups).ThenInclude(scr=>scr.Group).ThenInclude(x=>x.GroupPolicies);
     }
 }

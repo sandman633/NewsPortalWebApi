@@ -15,14 +15,8 @@ namespace NewsPortal.WebApi.Infrastructure
         {
             WebApiContext context = app.ApplicationServices.CreateScope().ServiceProvider
     .GetRequiredService<WebApiContext>();
-            context.Database.EnsureCreated();
-            if (context.Database.IsInMemory() == false)
-            {
-                if (context.Database.GetPendingMigrations().Any())
-                {
-                    context.Database.Migrate();
-                }
-            }
+            context.Database.EnsureDeleted();
+            context.Database.Migrate();
             if (!context.Users.Any())
             {
                 #region users
@@ -56,8 +50,8 @@ namespace NewsPortal.WebApi.Infrastructure
                         Id = 1,
                         Title = "News1",
                         Text = "Text1",
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
                     },
                     new News
@@ -65,16 +59,16 @@ namespace NewsPortal.WebApi.Infrastructure
                         Id = 2,
                         Title = "News2",
                         Text = "Text2",
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 2,
                     }, new News
                     {
                         Id = 3,
                         Title = "News3",
                         Text = "Text3",
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 2,
                     });
                 #endregion
@@ -87,8 +81,8 @@ namespace NewsPortal.WebApi.Infrastructure
                         NewsId = 1,
                         CommentState = 0,
                         Root = 0,
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
                         Text = "Comment1 news1",
                     }, new Comments
@@ -97,8 +91,8 @@ namespace NewsPortal.WebApi.Infrastructure
                         NewsId = 1,
                         CommentState = 0,
                         Root = 1,
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
                         Text = "Linked Comment to 1 news1",
                         LinkedCommentId = 1,
@@ -108,8 +102,8 @@ namespace NewsPortal.WebApi.Infrastructure
                         NewsId = 1,
                         CommentState = 0,
                         Root = 0,
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
                         Text = "Linked Comment to 2 news1",
                         LinkedCommentId = 2,
@@ -119,18 +113,18 @@ namespace NewsPortal.WebApi.Infrastructure
                         NewsId = 1,
                         CommentState = 0,
                         Root = 0,
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
-                        Text = "Comment1 news1",
+                        Text = "Comment4 news1",
                     }, new Comments
                     {
                         Id = 5,
                         NewsId = 2,
                         CommentState = 0,
                         Root = 0,
-                        CreatedTime = DateTime.Now,
-                        UpdatedTime = DateTime.Now,
+                        CreatedTime = DateTime.Now.ToUniversalTime(),
+                        UpdatedTime = DateTime.Now.ToUniversalTime(),
                         UserId = 1,
                         Text = "Comment5 news2",
                     });
