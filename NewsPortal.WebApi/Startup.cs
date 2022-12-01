@@ -25,10 +25,10 @@ namespace NewsPortal.WebApi
         {
 
             var authoptions = Configuration.GetSection("Auth").Get<JwtTokenConfig>();
-
             services.AddSingleton(authoptions);
 
             services.AddScoped<JwtAuthManager>();
+            services.DbConfigure(Configuration);
 
             services.RegisterRepository();
             services.RegisterServices();
@@ -37,7 +37,6 @@ namespace NewsPortal.WebApi
                                             .AllowAnyMethod()
                                             .AllowAnyHeader()));
 
-            services.DbConfigure(Configuration);
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers().AddNewtonsoftJson(options =>
                                         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -59,13 +58,11 @@ namespace NewsPortal.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
 
             app.UseAuthentication();
 
@@ -79,7 +76,6 @@ namespace NewsPortal.WebApi
             app.UseSwagger();
             app.UseSwaggerUI();
             SeedData.Seed(app);
-
         }
     }
 }

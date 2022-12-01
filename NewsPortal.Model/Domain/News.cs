@@ -26,11 +26,11 @@ namespace NewsPortal.Model.Domain
         /// <summary>
         /// Date of news creation
         /// </summary>
-        public DateTime CreatedTime { get; set; }
+        public DateTime? CreatedTime { get; set; }
         /// <summary>
         /// Date of news update
         /// </summary>
-        public DateTime UpdatedTime { get; set; }
+        public DateTime? UpdatedTime { get; set; }
         /// <summary>
         /// Comments
         /// </summary>

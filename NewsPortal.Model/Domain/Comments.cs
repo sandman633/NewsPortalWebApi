@@ -24,13 +24,13 @@ namespace NewsPortal.Model.Domain
         /// </summary>
         public string Text { get; set; }
         /// <summary>
-        /// Date of news creation
+        /// Date of comment creation
         /// </summary>
-        public DateTime CreatedTime { get; set; }
+        public DateTime? CreatedTime { get; set; }
         /// <summary>
-        /// Date of news update
+        /// Date of comment update
         /// </summary>
-        public DateTime UpdatedTime { get; set; }
+        public DateTime? UpdatedTime { get; set; }
         /// <summary>
         /// News navigation property
         /// </summary>

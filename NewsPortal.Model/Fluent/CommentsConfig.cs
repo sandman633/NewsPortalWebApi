@@ -44,10 +44,12 @@ namespace NewsPortal.Model.Fluent
                 .HasMaxLength(5);
 
             builder.Property(x => x.CreatedTime)
-                .HasDefaultValue(DateTime.Now);
+                .HasColumnType("timestamptz")
+                .IsRequired(false);
 
             builder.Property(x => x.UpdatedTime)
-                .HasDefaultValue(DateTime.Now);
+                .HasColumnType("timestamptz")
+                .IsRequired(false);
 
 
             builder.Property(x => x.CommentState)

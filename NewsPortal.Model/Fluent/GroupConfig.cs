@@ -12,6 +12,8 @@ namespace NewsPortal.Model.Fluent
 
             builder.HasIndex(x => x.Id);
 
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd();
             builder.Property(x => x.GroupName)
                 .HasMaxLength(50);
 
