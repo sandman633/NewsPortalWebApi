@@ -26,11 +26,11 @@
     },
     "Docker": {
       "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger/index.html",
+      "launchUrl": "https://{ServiceHost}:{ServicePort}/swagger/index.html",
       "publishAllPorts": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS" : "https://*:443;http://*:80"
+        "ASPNETCORE_URLS" : "https://*:443"
       },
       "useSSL": true
     }
