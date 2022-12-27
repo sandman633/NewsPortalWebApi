@@ -82,21 +82,12 @@ namespace Repositories
         /// <returns>DTO.</returns>
         public virtual async Task<TModel> GetByIdAsync(int id)
         {
-            try
-            {
-                var entity = await DefaultIncludeProperties(DbSet)
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(x => x.Id == id);
-
-                if (entity == null)
-                    throw new DataTransactionException($"Entity { typeof(TModel).Name } with Id : {id} not found", new { Id = id }, 404);
-                return entity;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            var entity = await DefaultIncludeProperties(DbSet)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (entity == null)
+                throw new DataTransactionException($"Entity { typeof(TModel).Name } with Id : {id} not found", new { Id = id }, 404);
+            return entity;
         }
 
         /// <summary>

@@ -35,20 +35,13 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
         }
         public async Task HideComments(params int[] ids)
         {
-            try
+            var entites = (await _crudRepository.GetByCriteriaAsync(src => ids.Contains(src.Id))).ToList();
+            foreach (var entite in entites)
             {
-                var entites = (await _crudRepository.GetByCriteriaAsync(src => ids.Contains(src.Id))).ToList();
-                foreach (var entite in entites)
-                {
-                    entite.CommentState = CommentState.DELETED;
-                }
-                await _crudRepository.UpdateRangeAsync(entites);
-                _unitOfWork.SaveChanges();
+                entite.CommentState = CommentState.DELETED;
             }
-            catch(Exception ex)
-            {
-                throw;
-            }
+            await _crudRepository.UpdateRangeAsync(entites);
+            _unitOfWork.SaveChanges();
         }
         public async Task<CommentsDto> ReplyComment(CommentsDto comment)
         {
