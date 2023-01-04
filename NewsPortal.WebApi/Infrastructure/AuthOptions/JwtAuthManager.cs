@@ -27,7 +27,6 @@ namespace NewsPortal.WebApi.Infrastructure.AuthOptions
         public JwtAuthResult GenerateAccessToken(Claim[] claims, DateTime now)
         {
             var shouldAddAudienceClaim = string.IsNullOrWhiteSpace(claims?.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Aud)?.Value);
-
             var jwtToken = new JwtSecurityToken(
                 _jwtTokenConfig.Issuer,
                 shouldAddAudienceClaim ? _jwtTokenConfig.Audience : string.Empty,
@@ -35,11 +34,19 @@ namespace NewsPortal.WebApi.Infrastructure.AuthOptions
                 expires: now.AddMinutes(_jwtTokenConfig.TokenLifeTime),
                 signingCredentials: new SigningCredentials(_jwtTokenConfig.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256Signature));
             var accessToken = new JwtSecurityTokenHandler().WriteToken(jwtToken);
-
             return new JwtAuthResult
             {
                 AccessToken = accessToken
             };
+        }
+
+        internal string GenerateRefreshToken(DateTime now)
+        {
+            var jwtToken = new JwtSecurityToken(
+                expires: now.AddMonths(1),
+                signingCredentials: new SigningCredentials(_jwtTokenConfig.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256Signature));
+            var refresh = new JwtSecurityTokenHandler().WriteToken(jwtToken);
+            return refresh;
         }
     }
 

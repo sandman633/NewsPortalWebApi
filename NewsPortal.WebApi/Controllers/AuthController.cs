@@ -71,12 +71,16 @@ namespace NewsPortal.WebApi.Controllers
             claims.Add(new Claim(ClaimTypes.Name, user.Email));
 
             var jwtResult = _jwtAuthManager.GenerateAccessToken(claims.ToArray(), DateTime.Now);
+            var jwtRefreshToken = _jwtAuthManager.GenerateRefreshToken(DateTime.Now);
+
+            _authService.AddToken(user.Id,jwtRefreshToken);
 
             var authResponse = new AuthResponse
             {
                 Id = user.Id,
                 Email = user.Email,
-                Token = jwtResult.AccessToken
+                Token = jwtResult.AccessToken,
+                RefreshToken = jwtRefreshToken
             };
             return Ok(authResponse);
         }

@@ -5,5 +5,7 @@
         public object Id { get; set; }
         public object Email { get; set; }
         public string Token { get; set; }
+        public string RefreshToken { get; set; }
+
     }
 }

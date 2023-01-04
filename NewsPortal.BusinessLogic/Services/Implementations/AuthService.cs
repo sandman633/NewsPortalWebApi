@@ -17,6 +17,11 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
             _mapper = mapper;
         }
 
+        public async void AddToken(int userId, string jwtRefreshToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<AuthenticatedUserDto> AuthenticateAsync(string email, string password)
         {
             if (string.IsNullOrEmpty(email))

@@ -8,6 +8,8 @@ namespace NewsPortal.BusinessLogic.Services.Interfaces
     /// </summary>
     public interface IAuthService
     {
+        void AddToken(int id, string jwtRefreshToken);
+
         /// <summary>
         /// Authenticate employee by email and password.
         /// </summary>
