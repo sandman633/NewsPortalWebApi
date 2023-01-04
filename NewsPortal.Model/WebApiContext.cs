@@ -22,12 +22,7 @@ namespace NewsPortal.Model
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new NewsConfig());
-            builder.ApplyConfiguration(new CommentsConfig());
-            builder.ApplyConfiguration(new UserConfig());
-            builder.ApplyConfiguration(new GroupPolicyConfig());
-            builder.ApplyConfiguration(new UserGroupConfig());
+            builder.ApplyConfigurationsFromAssembly(typeof(WebApiContext).Assembly);
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace NewsPortal.Model.Domain
@@ -42,5 +41,9 @@ namespace NewsPortal.Model.Domain
         /// User news.
         /// </summary>
         public ICollection<News> News { get; set; }
+        /// <summary>
+        /// User refresh tokens.
+        /// </summary>
+        public ICollection<UserToken> UserTokens { get; set; }
     }
 }
