@@ -1,4 +1,5 @@
 ﻿using NewsPortal.DAL.Dto;
+using System;
 using System.Threading.Tasks;
 
 namespace NewsPortal.BusinessLogic.Services.Interfaces
@@ -8,7 +9,7 @@ namespace NewsPortal.BusinessLogic.Services.Interfaces
     /// </summary>
     public interface IAuthService
     {
-        void AddToken(int id, string jwtRefreshToken);
+        void AddToken(int id, string jwtRefreshToken, DateTime now);
 
         /// <summary>
         /// Authenticate employee by email and password.

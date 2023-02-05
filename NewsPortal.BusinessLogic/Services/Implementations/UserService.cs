@@ -8,6 +8,7 @@ using System;
 using NewsPortal.BusinessLogic.Services.Infrastructure;
 using NewsPortal.Model;
 using AutoMapper;
+using Repositories.Interfaces.CRUD;
 
 namespace NewsPortal.BusinessLogic.Services.Implementations
 {
@@ -32,4 +33,5 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
             return _mapper.Map<UserDto>(user.SingleOrDefault());
         }
     }
+
 }

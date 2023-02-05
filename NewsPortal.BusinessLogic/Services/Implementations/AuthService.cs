@@ -9,17 +9,19 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
     public class AuthService : IAuthService
     {
         private readonly IUserService _userService;
+        private readonly IUserTokenService _userTokenService;
         private readonly IMapper _mapper;
 
-        public AuthService(IUserService userService, IMapper mapper)
+        public AuthService(IUserService userService, IUserTokenService userTokenService, IMapper mapper)
         {
             _userService = userService;
+            _userTokenService = userTokenService;
             _mapper = mapper;
         }
 
-        public async void AddToken(int userId, string jwtRefreshToken)
+        public async void AddToken(int userId, string jwtRefreshToken, DateTime refreshTime)
         {
-            throw new NotImplementedException();
+            await _userTokenService.AddRefreshToken(userId, jwtRefreshToken,refreshTime);
         }
 
         public async Task<AuthenticatedUserDto> AuthenticateAsync(string email, string password)
@@ -59,5 +61,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
             return _mapper.Map<AuthenticatedUserDto>(createdEmployee);
         }
     }
+
+
 }
 
