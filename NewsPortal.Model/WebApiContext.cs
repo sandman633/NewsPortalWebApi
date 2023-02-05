@@ -7,6 +7,7 @@ namespace NewsPortal.Model
     public class WebApiContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<UserToken> UsersToken { get; set; }
 
         public DbSet<News> News { get; set; }
 
