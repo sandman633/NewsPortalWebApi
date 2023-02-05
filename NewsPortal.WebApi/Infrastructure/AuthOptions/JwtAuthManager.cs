@@ -40,7 +40,7 @@ namespace NewsPortal.WebApi.Infrastructure.AuthOptions
             };
         }
 
-        internal string GenerateRefreshToken(DateTime now)
+        public string GenerateRefreshToken(DateTime now)
         {
             var jwtToken = new JwtSecurityToken(
                 expires: now,

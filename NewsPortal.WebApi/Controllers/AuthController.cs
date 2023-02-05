@@ -30,7 +30,6 @@ namespace NewsPortal.WebApi.Controllers
             _authService = authService;
             _jwtAuthManager = jwtAuthManager;
         }
-
         /// <summary>
         /// Authenticates employee by request parameters.
         /// </summary>
@@ -55,30 +54,18 @@ namespace NewsPortal.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
         /// <summary>
         /// Returns auth info for given user.
         /// </summary>
         /// <param name="user">Authenticated user.</param>
         private async Task<AuthResponse> SendToken(AuthenticatedUserDto user)
         {
-            var now = DateTime.Now;
-            var refreshTime = now.AddMonths(1);
+            var now = DateTime.UtcNow;
             var policies = await _groupPolicyService.GetPoliciesForUser(user.Id);
-            List<Claim> claims = new List<Claim>();
-            foreach (var policy in policies)
-            {
-                claims.Add(new Claim(policy.Key, policy.Value.ToString()));
-            }
-
-            claims.Add(new Claim(ClaimTypes.Name, user.Email));
-
+            List<Claim> claims = GetClaims(user, policies);
             var jwtResult = _jwtAuthManager.GenerateAccessToken(claims.ToArray(), now);
-            var jwtRefreshToken = _jwtAuthManager.GenerateRefreshToken(refreshTime);
-
-            _authService.AddToken(user.Id,jwtRefreshToken, refreshTime);
-
+            var jwtRefreshToken = _jwtAuthManager.GenerateRefreshToken(now);
+            _authService.AddToken(user.Id, jwtRefreshToken, now);
             var authResponse = new AuthResponse
             {
                 Id = user.Id,
@@ -87,6 +74,17 @@ namespace NewsPortal.WebApi.Controllers
                 RefreshToken = jwtRefreshToken
             };
             return authResponse;
+        }
+        private static List<Claim> GetClaims(AuthenticatedUserDto user, IEnumerable<KeyValuePair<string, short?>> policies)
+        {
+            List<Claim> claims = new List<Claim>();
+            foreach (var policy in policies)
+            {
+                claims.Add(new Claim(policy.Key, policy.Value.ToString()));
+            }
+
+            claims.Add(new Claim(ClaimTypes.Name, user.Email));
+            return claims;
         }
     }
 }

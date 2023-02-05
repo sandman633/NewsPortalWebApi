@@ -21,6 +21,7 @@ namespace NewsPortal.BusinessLogic.Services.Implementations
 
         public async void AddToken(int userId, string jwtRefreshToken, DateTime refreshTime)
         {
+            refreshTime = refreshTime.AddMonths(1);
             await _userTokenService.AddRefreshToken(userId, jwtRefreshToken,refreshTime);
         }
 
