@@ -17,6 +17,7 @@ namespace NewsPortal.WebApi.Infrastructure.Extensions
             services.AddScoped<IGroupPolicyRepository, GroupPolicyRepository>();
             services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserTokenRepository, UserTokenRepository>();
             services.AddScoped<ICommentsRepository, CommentsRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();
         }

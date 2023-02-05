@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
+using System;
 
 namespace NewsPortal.WebApi.Infrastructure.Extensions
 {
@@ -28,6 +29,8 @@ namespace NewsPortal.WebApi.Infrastructure.Extensions
 
                     IssuerSigningKey = jwtTokenConfig.GetSymmetricSecurityKey(),
                     ValidateIssuerSigningKey = true,
+
+                    ClockSkew = TimeSpan.Zero
                 };
             });
         }

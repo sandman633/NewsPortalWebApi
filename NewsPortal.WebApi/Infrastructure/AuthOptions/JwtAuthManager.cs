@@ -43,7 +43,7 @@ namespace NewsPortal.WebApi.Infrastructure.AuthOptions
         internal string GenerateRefreshToken(DateTime now)
         {
             var jwtToken = new JwtSecurityToken(
-                expires: now.AddMonths(1),
+                expires: now,
                 signingCredentials: new SigningCredentials(_jwtTokenConfig.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256Signature));
             var refresh = new JwtSecurityTokenHandler().WriteToken(jwtToken);
             return refresh;

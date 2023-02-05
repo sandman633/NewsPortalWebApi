@@ -20,6 +20,7 @@ namespace NewsPortal.WebApi.Infrastructure.Extensions
             services.AddScoped<IGroupPolicyService, GroupPolicyService>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserTokenService, UserTokenService>();
             services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<INewsService, NewsService>();
         }

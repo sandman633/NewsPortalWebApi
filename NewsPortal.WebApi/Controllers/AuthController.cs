@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NewsPortal.WebApi.Infrastructure.AuthOptions;
 using NewsPortal.DAL.Dto;
+using NewsPortal.DAL.Response;
 
 namespace NewsPortal.WebApi.Controllers
 {
@@ -38,7 +39,7 @@ namespace NewsPortal.WebApi.Controllers
         [ProducesResponseType(typeof(AuthResponse), 200)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [AllowAnonymous]
-        public async Task<IActionResult> AuthenticateAsync(AuthRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<Result<AuthResponse>>> AuthenticateAsync(AuthRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Authenticate was requested.");
             try
@@ -46,7 +47,8 @@ namespace NewsPortal.WebApi.Controllers
                 var authenticatedUser = await _authService.AuthenticateAsync(request.Email, request.Password);
                 if (authenticatedUser == null)
                     return BadRequest("Wrong password!");
-                return await SendToken(authenticatedUser);
+                var result = await SendToken(authenticatedUser);
+                return Ok(new Result<AuthResponse>(result));
             }
             catch (Exception ex)
             {
@@ -59,8 +61,10 @@ namespace NewsPortal.WebApi.Controllers
         /// Returns auth info for given user.
         /// </summary>
         /// <param name="user">Authenticated user.</param>
-        private async Task<IActionResult> SendToken(AuthenticatedUserDto user)
+        private async Task<AuthResponse> SendToken(AuthenticatedUserDto user)
         {
+            var now = DateTime.Now;
+            var refreshTime = now.AddMonths(1);
             var policies = await _groupPolicyService.GetPoliciesForUser(user.Id);
             List<Claim> claims = new List<Claim>();
             foreach (var policy in policies)
@@ -70,10 +74,10 @@ namespace NewsPortal.WebApi.Controllers
 
             claims.Add(new Claim(ClaimTypes.Name, user.Email));
 
-            var jwtResult = _jwtAuthManager.GenerateAccessToken(claims.ToArray(), DateTime.Now);
-            var jwtRefreshToken = _jwtAuthManager.GenerateRefreshToken(DateTime.Now);
+            var jwtResult = _jwtAuthManager.GenerateAccessToken(claims.ToArray(), now);
+            var jwtRefreshToken = _jwtAuthManager.GenerateRefreshToken(refreshTime);
 
-            _authService.AddToken(user.Id,jwtRefreshToken);
+            _authService.AddToken(user.Id,jwtRefreshToken, refreshTime);
 
             var authResponse = new AuthResponse
             {
@@ -82,7 +86,7 @@ namespace NewsPortal.WebApi.Controllers
                 Token = jwtResult.AccessToken,
                 RefreshToken = jwtRefreshToken
             };
-            return Ok(authResponse);
+            return authResponse;
         }
     }
 }
